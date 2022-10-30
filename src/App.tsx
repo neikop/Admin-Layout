@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AOS from 'aos';
+import { SnackbarProvider } from 'notistack';
+import { QueryClientProvider } from 'react-query';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { PublicLayout } from './layouts';
+import AuthLayout from './layouts/authLayout';
+import { AppTheme } from './layouts/containers';
+import { store } from './reducers/store';
+import { queryClient } from './services';
 
-function App() {
+AOS.init();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Provider store={store}>
+      <QueryClientProvider client={queryClient}>
+        <SnackbarProvider
+          preventDuplicate
+          variant='success'
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <AppTheme>
+            <BrowserRouter>
+              <Routes>
+                <Route path='/auth/*' element={<AuthLayout />} />
+                <Route path='/*' element={<PublicLayout />} />
+              </Routes>
+            </BrowserRouter>
+          </AppTheme>
+        </SnackbarProvider>
+      </QueryClientProvider>
+    </Provider>
   );
-}
+};
 
 export default App;

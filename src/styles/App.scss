@@ -1,0 +1,56 @@
+@import '~aos/dist/aos.css';
+// @import '~react-perfect-scrollbar/dist/css/styles.css';
+// @import '~slick-carousel/slick/slick.css';
+// @import '~slick-carousel/slick/slick-theme.css';
+@import './components';
+@import './mui';
+
+body {
+  font-size: 1rem;
+  font-family: 'Lexend' !important;
+}
+
+main {
+  min-height: calc(100vh);
+  background-color: #281C70;
+}
+
+* {
+  outline: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+body > iframe {
+  display: none;
+}
+
+:root {
+  --color-primary: #ffde48;
+  --color-secondary: #fc9669;
+  --color-info: #3fb2ff;
+  --color-action: #cecece;
+}
+
+@font-face {
+  font-family: 'Lexend';
+  src: url('../assets/fonts/lexend/Lexend-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+@font-face {
+  font-family: 'Lexend';
+  src: url('../assets/fonts/lexend/Lexend-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Lexend';
+  src: url('../assets/fonts/lexend/Lexend-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Lexend';
+  src: url('../assets/fonts/lexend/Lexend-Thin.ttf') format('truetype');
+  font-weight: 100;
+}
