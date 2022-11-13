@@ -22,7 +22,7 @@ const AuthLayout = () => {
 
   return (
     <>
-      <main className='overflow-hidden' style={{ backgroundColor: 'white', color: 'black', padding: '20px' }}>
+      <main className='overflow-hidden'>
         <AppController>
           <Routes>
             {Object.values(authRoute).map(({ path, component: Element }) => (
@@ -31,14 +31,6 @@ const AuthLayout = () => {
             <Route path='/*' element={<Navigate to={authRoute.login.path} />} />
           </Routes>
         </AppController>
-        <div className='text-center p-5'>
-          <label htmlFor=''>Đồng tài trợ bởi:</label>
-          <div className='flex justify-around mt-7'>
-            <img src={require('../assets/images/vin.png')} alt='vin' loading='lazy' />
-            <img src={require('../assets/images/tech.png')} alt='tech' loading='lazy' />
-            <img src={require('../assets/images/bidv.png')} alt='bidv' loading='lazy' />
-          </div>
-        </div>
       </main>
     </>
   );

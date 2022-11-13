@@ -5,7 +5,7 @@ export type ProfileState = {
   isLoggedIn?: boolean;
   accessToken?: string;
   refreshToken?: string;
-  balance?: string;
+  balance?: number;
   incId?: string;
   id?: string;
   email?: string;
@@ -27,10 +27,15 @@ export const profileSlice = createSlice({
       localStorage.removeItem('pageTracking');
       return { isLoggedIn: false };
     },
+    newBalance: (state, { payload }) => {
+      const profile = { ...state, ...payload };
+      localStorage.setItem('profile', JSON.stringify(profile));
+      return profile;
+    },
   },
 });
 
-export const { signIn, signOut } = profileSlice.actions;
+export const { signIn, signOut, newBalance } = profileSlice.actions;
 
 export const profileSelector = ({ profile }: RootState) => profile;
 

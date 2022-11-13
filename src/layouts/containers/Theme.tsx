@@ -22,13 +22,16 @@ export const appTheme = createTheme({
     MuiInput: {
       styleOverrides: {
         root: {
-          padding: '30px 30px 10px 10px',
+          height: 40,
+          // padding: '30px 30px 10px 10px',
+          margin: '10px auto',
         },
       },
     },
     MuiTextField: {
       styleOverrides: {
         root: {
+          margin: '10px auto',
           '& .MuiOutlinedInput-root.Mui-focused fieldset': {
             borderWidth: 1,
             boxShadow: '0px 0px 4px 0px #FC9669',
@@ -46,7 +49,7 @@ export const appTheme = createTheme({
       styleOverrides: {
         root: {
           minHeight: 40,
-          color: '#F4F1EA',
+          color: '#1E2843',
           '&Indicator': {
             color: 'red',
           },
@@ -54,22 +57,20 @@ export const appTheme = createTheme({
       },
     },
     MuiGrid: {
-      styleOverrides:{
-        root:{
-          '&.MuiGrid-item':{
-
-          }
-        }
-      }
+      styleOverrides: {
+        root: {
+          '&.MuiGrid-item': {},
+        },
+      },
     },
     MuiTab: {
       styleOverrides: {
         root: {
           textTransform: 'none',
-          color: '#F4F1EA',
-          minHeight: 40,
+          color: '#465A7A',
+          minHeight: 50,
           '&.Mui-selected': {
-            color: '#FC33A3',
+            color: '#1E2843',
           },
         },
       },
@@ -97,7 +98,7 @@ export const appTheme = createTheme({
       dark: '#0071BC',
     },
     action: {
-      active: '#CECECE',
+      active: '#1E2843',
     },
     // mode: 'dark',
   },

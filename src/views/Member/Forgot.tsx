@@ -16,7 +16,6 @@ const Forgot = () => {
   });
   const handleClickSubmit = () => {
     handleSubmit((values) => {
-      console.log(values);
       mutate(values);
     })();
   };

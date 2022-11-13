@@ -4,16 +4,21 @@ import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-
 import { profileSelector } from '../reducers/profileSlice';
 import { publicRoute } from '../routes';
 import authRoute from '../routes/authRoute';
+import { Socket } from '../services/socket';
 import { AppController, AppHeader } from './containers';
 
-const PublicLayout = () => {
+const PrivateLayout = () => {
   const location = useLocation();
   const navigator = useNavigate();
   const { isLoggedIn } = useSelector(profileSelector);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (!isLoggedIn) {
       navigator(authRoute.login.url, { replace: true });
+    } else {
+      const socket = new Socket();
+      socket.connect();
     }
   }, [isLoggedIn, navigator]);
   useEffect(() => {
@@ -23,7 +28,7 @@ const PublicLayout = () => {
   return (
     <>
       <AppHeader />
-      <main className='overflow-hidden' style={{ color: '#F4F1EA', marginBottom: '100px' }}>
+      <main className='overflow-hidden'>
         <AppController>
           <Routes>
             {Object.values(publicRoute)
@@ -39,4 +44,4 @@ const PublicLayout = () => {
   );
 };
 
-export default PublicLayout;
+export default PrivateLayout;

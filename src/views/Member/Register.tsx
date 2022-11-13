@@ -44,6 +44,11 @@ const Register = () => {
             fullWidth
             required
             placeholder='Tên đăng nhập'
+            sx={{
+              '& .MuiInput-root': {
+                height: 40,
+              },
+            }}
             variant='standard'
             error={invalid}
             helperText={error?.message}
@@ -60,6 +65,12 @@ const Register = () => {
             {...field}
             fullWidth
             placeholder='Mật khẩu'
+            sx={{
+              '& .MuiInput-root': {
+                height: 40,
+                marginTop: '20px',
+              },
+            }}
             required
             variant='standard'
             error={invalid}
@@ -84,13 +95,29 @@ const Register = () => {
             placeholder='Nhập lại mật khẩu'
             required
             variant='standard'
+            sx={{
+              '& .MuiInput-root': {
+                height: 40,
+                marginTop: '20px',
+              },
+            }}
             error={invalid}
             helperText={error?.message}
           />
         )}
       />
       <div className='p-5'>
-        <LoadingButton fullWidth variant='contained' color='secondary' loading={isLoading} onClick={handleClickSubmit}>
+        <LoadingButton
+          fullWidth
+          variant='contained'
+          sx={{
+            background: 'linear-gradient(180deg, #9689ED 0%, #5B4DBE 100%)',
+            borderRadius: '10px',
+            padding: '10px',
+          }}
+          loading={isLoading}
+          onClick={handleClickSubmit}
+        >
           Đăng ký
         </LoadingButton>
       </div>

@@ -14,7 +14,7 @@ const InputPassword = forwardRef((props: TextFieldProps, ref) => {
         inputRef: ref,
         endAdornment: (
           <InputAdornment position='end' className='-mr-2'>
-            <IconButton className='text-black/50' onClick={() => setShowPassword((prev) => !prev)}>
+            <IconButton className='text-black' onClick={() => setShowPassword((prev) => !prev)}>
               {showPassword ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
             </IconButton>
           </InputAdornment>

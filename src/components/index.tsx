@@ -1,13 +1,13 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
-export { default as InputNumber } from './InputNumber';
+export { default as Ball } from './Ball';
 export { default as CloseButton } from './CloseButton';
-export { default as Spinner } from './Spinner';
 export { default as CountdownTimer } from './CountdownTimer';
 export { DesignButton } from './DesignButton';
+export { default as InputNumber } from './InputNumber';
 export { default as InputPassword } from './InputPassword';
 export { default as RegisterSticker } from './RegisterSticker';
-export { default as Ball } from './Ball';
+export { default as Spinner } from './Spinner';
 
 export interface TabPanelProps {
   children?: React.ReactNode;
@@ -28,7 +28,7 @@ export function TabPanel(props: TabPanelProps) {
     >
       {value === index && (
         <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+          <>{children}</>
         </Box>
       )}
     </div>

@@ -7,40 +7,48 @@ body {
   font-family: 'Lexend' !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #2c1d82;
+  /* background-color: #2c1d82; */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 main {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh);
+
   max-width: 600px;
   overflow: scroll;
-  background-color: #281C70;
+  background-image: url(/src//assets/images/background.png);
   margin: auto;
+  color: #1e2843;
 }
 
-
 .balance {
-  background-color: #140D50;
+  background-color: #140d50;
   width: 100%;
   display: flex;
   justify-content: space-between;
   max-width: 600px;
   padding: 0 15px;
   line-height: 40px;
+  border-radius: 20px;
 }
 
 .ball {
-  background-image: url(/src//assets/images/ball.png);
   width: 40px;
   height: 40px;
+  color: white;
+  background: linear-gradient(180deg, #ff9e7e 0%, #ff5018 100%);
+  box-shadow: 0px -4px 8px rgba(238, 198, 110, 0.2);
+}
+
+.balancebox {
+  background-image: url(/src//assets/images/bgbox.png);
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
-  box-shadow: 0 -4px 8px #eec66e33;
-  text-shadow: -1px -1px 0px #ffe68b, 0px -1px 0px #ffe68b, 1px -1px 0px #ffe68b, -1px 0px 0px #ffe68b, 1px 0px 0px #ffe68b, -1px 1px 0px #ffe68b, 0px 1px 0px #ffe68b, 1px 1px 0px #ffe68b;
+  background-position: center;
+  color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
 }

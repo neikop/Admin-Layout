@@ -6,7 +6,7 @@ const Deposit = ({ onClose }: any) => {
   return (
     <>
       <DialogTitle className='text-center'>{process.env.REACT_APP_SITE_TITLE?.toUpperCase()}</DialogTitle>
-      <DialogContent className='content-center'>Vui lòng liên hệ admin để được hỗ trợ!</DialogContent>
+      <DialogContent className='item-center mt-28 text-center'>Vui lòng liên hệ admin để được hỗ trợ!</DialogContent>
       <CloseButton onClick={onClose} />
     </>
   );

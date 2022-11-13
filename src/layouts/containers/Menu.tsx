@@ -10,7 +10,7 @@ const StyledListItem = styled(ListItemButton)({
   width: '100%',
   color: '#564BA8',
   '&:hover, &.Mui-selected': {
-    color: '#FC33A3',
+    color: '#1E2843',
   },
   '&.Mui-selected': {
     backgroundColor: 'transparent',
@@ -31,12 +31,13 @@ const NavItem = ({ path, name, icon }: { path: string; name: string; icon?: any 
 };
 
 const Menu = () => {
-  const { home, trend, chat, member } = publicRoute;
+  const { home, trend, chat, member, transaction } = publicRoute;
 
   return (
-    <div className='flex justify-around' style={{ maxWidth: 600, width: '100%', backgroundColor: '#1E2843' }}>
-      <NavItem {...home} />
+    <div className='flex justify-around' style={{ maxWidth: 600, width: '100%' }}>
       <NavItem {...trend} />
+      <NavItem {...transaction} />
+      <NavItem {...home} />
       <NavItem {...member} />
       <NavItem {...chat} />
     </div>

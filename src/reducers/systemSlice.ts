@@ -1,9 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { RootState } from "./store";
+import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from './store';
 
+export type SystemState = {
+  currentSessions?: any;
+  lastSessions?: any;
+  countdownByZone?: any;
+};
 const systemSlice = createSlice({
-  name: "system",
-  initialState: {},
+  name: 'system',
+  initialState: {} as SystemState,
   reducers: {
     save: (state, { payload }) => {
       state = { ...state, ...payload };
@@ -12,7 +17,7 @@ const systemSlice = createSlice({
   },
 });
 
-export const { save: saveSystem } = systemSlice.actions;
+export const { save } = systemSlice.actions;
 
 export const systemSelector = ({ system }: RootState) => system;
 

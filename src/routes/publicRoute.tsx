@@ -2,10 +2,12 @@ import HomeIcon from '@mui/icons-material/Home';
 import MessageSharpIcon from '@mui/icons-material/MessageSharp';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import { Chat } from '../views/Chat';
 import { Home } from '../views/Home';
 import { Member } from '../views/Member';
 import { Trend } from '../views/Trend';
+import { Transaction } from '../views/Transaction';
 
 const publicRoute = {
   home: {
@@ -25,7 +27,14 @@ const publicRoute = {
     name: 'Thành viên',
     icon: <PersonOutlineIcon />,
     component: Member,
-    // requiredLogin: true,
+    requiredLogin: true,
+  },
+  transaction: {
+    path: '/giao-dich',
+    name: 'Giao dịch',
+    icon: <SyncAltIcon />,
+    component: Transaction,
+    requiredLogin: true,
   },
   chat: {
     path: '/chat',

@@ -11,12 +11,23 @@ body {
 }
 
 main {
-  min-height: calc(100vh);
-  background-color: #281C70;
+  min-height: calc(100vh - 100px);
+  background-color: #281c70;
 }
 
 * {
   outline: none !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 
 a:hover {
@@ -29,7 +40,7 @@ body > iframe {
 
 :root {
   --color-primary: #ffde48;
-  --color-secondary: #fc9669;
+  --color-secondary: #9689ed;
   --color-info: #3fb2ff;
   --color-action: #cecece;
 }

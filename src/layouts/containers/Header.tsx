@@ -17,16 +17,11 @@ const Header = () => {
   }, [location]);
 
   return (
-    <AppBar
-      position='fixed'
-      sx={{ top: 'auto', bottom: 0 }}
-      elevation={0}
-      style={{ background: '#2c1d82', alignItems: 'center' }}
-    >
+    <AppBar position='fixed' sx={{ top: 'auto', bottom: 0, alignItems: 'center', background: 'white' }} elevation={0}>
       <div className='balance'>
         <div>Số dư tài khoản ID: {incId}</div>
         <div>
-          {showBalance ? balance : '*******'}Đ
+          {showBalance ? balance : '*******'}
           <IconButton onClick={() => setShowBalance((prev) => !prev)}>
             {showBalance ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
           </IconButton>
