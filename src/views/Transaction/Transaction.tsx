@@ -44,7 +44,7 @@ const Transaction = () => {
     <div className='min-h-full'>
       <Box className='flex p-3 justify-center'>
         {/* <img className='' src={require('../../assets/images/icon.png')} alt='logo' loading='lazy' /> */}
-        <label className='text-xl font-normal'>Xu hướng kỷ lục</label>
+        <label className='text-xl font-normal'>Giao dịch</label>
       </Box>
       <Box
         sx={{
@@ -54,6 +54,7 @@ const Transaction = () => {
           marginBottom: '90px',
           borderRadius: '25px 25px 0px 0px',
           '& >div>div>.css-19kzrtu': { padding: 0 },
+          '& >div>div>.css-19kzrtu >div': { background: 'transparent' },
         }}
       >
         <Box sx={{ width: '100%' }} className='p-3 '>

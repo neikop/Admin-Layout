@@ -1,4 +1,4 @@
-import { ListItemButton } from '@mui/material';
+import { ListItemButton, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 import { Link, useLocation } from 'react-router-dom';
 import { publicRoute } from '../../routes';
@@ -24,7 +24,7 @@ const NavItem = ({ path, name, icon }: { path: string; name: string; icon?: any 
     <Link to={path}>
       <StyledListItem selected={isHome ? pathname === path : pathname.startsWith(path)}>
         {icon}
-        {name}
+        <label className='text-xs'>{name}</label>
       </StyledListItem>
     </Link>
   );
