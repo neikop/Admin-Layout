@@ -1,7 +1,7 @@
 import { useSnackbar } from 'notistack';
 import { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { notificationSelector } from '../reducers/notificationSlice';
+import { notificationSelector } from 'reducers/notificationSlice';
 
 const useNotification = () => {
   const { enqueueSnackbar } = useSnackbar();

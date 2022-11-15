@@ -1,7 +1,8 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
-import { openAlert } from '../reducers/notificationSlice';
-import { ProfileState, signOut } from '../reducers/profileSlice';
-import { store } from '../reducers/store';
+import { openAlert } from 'reducers/notificationSlice';
+import { ProfileState, signOut } from 'reducers/profileSlice';
+import { store } from 'reducers/store';
+
 const beforeRequest = (config: AxiosRequestConfig) => {
   const { isLoggedIn, accessToken }: ProfileState = store.getState().profile;
   if (isLoggedIn) {
@@ -11,9 +12,7 @@ const beforeRequest = (config: AxiosRequestConfig) => {
   }
   try {
     if (config.data instanceof FormData) {
-      Object.assign(config.headers as any, {
-        'Content-Type': 'multipart/form-data',
-      });
+      Object.assign(config.headers as any, { 'Content-Type': 'multipart/form-data' });
     }
   } catch {}
   return config;

@@ -1,0 +1,58 @@
+@import '~react-perfect-scrollbar/dist/css/styles.css';
+@import 'styles/components';
+@import 'styles/mui';
+
+body {
+  font-size: 1rem;
+  font-family: 'Noto Sans Display' !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  min-height: 100vh;
+  max-height: 100vh;
+  max-width: 600px;
+  margin: auto;
+  background: url(assets/images/App-background.png) no-repeat center / cover;
+}
+
+* {
+  outline: none !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+:root {
+  --color-primary: #9689ed;
+  --color-primary-dark: #5b4dbe;
+  --color-secondary: #ff9e7e;
+  --color-secondary-dark: #ff5018;
+}
+
+body > iframe {
+  display: none;
+}
+
+@font-face {
+  font-family: 'Lexend';
+  src: url('/assets/fonts/Lexend-Black.ttf') format('truetype');
+  font-weight: 900;
+}
+@font-face {
+  font-family: 'Lexend';
+  src: url('/assets/fonts/Lexend-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Lexend';
+  src: url('/assets/fonts/Lexend-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+@font-face {
+  font-family: 'Lexend';
+  src: url('/assets/fonts/Lexend-Thin.ttf') format('truetype');
+  font-weight: 100;
+}

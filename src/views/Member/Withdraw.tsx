@@ -4,8 +4,8 @@ import { DialogContent, DialogTitle, TextField } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { Controller, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
-import { CloseButton } from '../../components';
-import { transactionService } from '../../services';
+import { CloseButton } from 'components';
+import { transactionService } from 'services';
 
 const Withdraw = ({ onClose }: any) => {
   const { enqueueSnackbar } = useSnackbar();
@@ -31,7 +31,7 @@ const Withdraw = ({ onClose }: any) => {
       <DialogContent>
         <Controller
           name='amount'
-          defaultValue={''}
+          defaultValue=''
           control={control}
           rules={{ required: 'Bắt buộc', min: { value: 1, message: 'Lớn hơn 1' } }}
           render={({ field, fieldState: { invalid, error } }) => (
@@ -46,7 +46,7 @@ const Withdraw = ({ onClose }: any) => {
                 },
               }}
               variant='standard'
-              type={'number'}
+              type='number'
               error={invalid}
               helperText={error?.message}
             />

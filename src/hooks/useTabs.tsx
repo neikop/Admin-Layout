@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 export type TabType = {
   code: string;
   label: React.ReactNode;
-  component: React.ReactNode;
+  component?: React.ReactNode;
 };
 
 const useTabs = (tabs: TabType[]) => {

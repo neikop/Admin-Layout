@@ -1,116 +1,34 @@
-.walletconnect-modal__base {
-  .walletconnect-modal__mobile__toggle {
-    color: #888;
-    > a {
-      cursor: pointer;
-    }
-  }
-  .walletconnect-qrcode__image {
-    cursor: auto;
-  }
+.ball {
+  width: 40px;
+  height: 40px;
+  color: white;
+  background: linear-gradient(180deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+  box-shadow: 0px 2px 8px 2px rgba(238, 198, 110, 0.5);
 }
 
-@for $i from 1 through 12 {
-  .max-line-#{$i} {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: #{$i};
-    -webkit-box-orient: vertical;
-  }
+.balancebox {
+  background: url(/assets/images/bgbox.png) no-repeat center / cover;
+  color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.loading:after {
-  content: ' .';
-  animation: dots 1s steps(5, end) infinite;
-  color: black;
+.bg-primary-gradient {
+  background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
 }
 
-@keyframes dots {
-  0%,
-  20% {
-    color: transparent;
-    text-shadow: 0.2rem 0 0 transparent, 0.4rem 0 0 transparent;
-  }
-  40% {
-    color: black;
-    text-shadow: 0.2rem 0 0 transparent, 0.4rem 0 0 transparent;
-  }
-  60% {
-    text-shadow: 0.2rem 0 0 black, 0.4rem 0 0 transparent;
-  }
-  80%,
-  100% {
-    text-shadow: 0.2rem 0 0 black, 0.4rem 0 0 black;
-  }
+.bg-secondary-gradient {
+  background: linear-gradient(180deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+  color: white;
 }
 
-.mobile-nav {
-  display: flex;
-  align-items: left;
-
-  @media (max-width: 1024px) {
-    position: fixed;
-    inset: 80px 0 0 0;
-    flex-direction: column;
-    background-color: #f7f7f7 !important;
-    border-bottom: 1px solid silver;
-    z-index: 999;
-    transition: all 0.3s;
-
-    > a {
-      padding: 12px 0px;
-      border-bottom: 1px solid #dedede;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    display: flex !important;
-  }
+.bg-success-gradient {
+  background: linear-gradient(180deg, #80d078 0%, #50b046 100%);
+  color: white;
 }
 
-.mobile-filter {
-  display: flex;
-  flex: 1;
-  align-items: center;
-
-  @media (max-width: 1024px) {
-    position: fixed;
-    top: calc(80px + 80px);
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    background-color: #f7f7f7 !important;
-    border-bottom: 1px solid silver;
-    z-index: 999;
-    transition: all 0.3s;
-  }
-
-  @media (min-width: 1024px) {
-    display: flex !important;
-  }
-}
-
-.home-title {
-  font-family: Exo;
-  background: linear-gradient(180deg, #f7da3b 16.67%, #e5492b 78.65%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 3px white;
-  font-weight: 900;
-  font-size: 80px;
-
-  @media (max-width: 600px) {
-    margin-bottom: 12px;
-    font-size: 44px;
-    line-height: 48px;
-    -webkit-text-stroke: 2px white;
-
-    + .font-bold.text-2xl {
-      font-size: 20px !important;
-      line-height: 24px !important;
-    }
-  }
+.bg-warning-gradient {
+  background: linear-gradient(180deg, #eda767 0%, #df8532 100%);
+  color: white;
 }

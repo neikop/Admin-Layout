@@ -5,10 +5,10 @@ import { Box, Dialog, Grid, IconButton, Tab, Tabs } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Countdown from 'react-countdown';
 import { useSelector } from 'react-redux';
-import { a11yProps, Ball, TabPanel } from '../../components';
-import { oneToFiveOdds, tongHoaOdds } from '../../contants/odds';
-import { systemSelector } from '../../reducers/systemSlice';
-import { PopupBet } from '../Cards';
+import { a11yProps, Ball, TabPanel } from 'components';
+import { oneToFiveOdds, tongHoaOdds } from './constants';
+import { systemSelector } from 'reducers/systemSlice';
+import { PopupBet } from 'views/Cards';
 
 const Home = () => {
   const { currentSessions, lastSessions } = useSelector(systemSelector);
@@ -107,7 +107,7 @@ const Home = () => {
   return (
     <div className='pt-3 leading-8'>
       <Box className='flex px-3 justify-between'>
-        <img className='' src={require('../../assets/images/icon.png')} alt='logo' loading='lazy' />
+        <img className='' src={require('assets/images/icon.png')} alt='logo' loading='lazy' />
         <label className=' text-xl font-normal'>Kết quả kỳ {session.id} hôm nay</label>
         <IconButton>
           <InfoOutlinedIcon />

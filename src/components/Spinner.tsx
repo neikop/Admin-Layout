@@ -1,14 +1,13 @@
-import { Backdrop, CircularProgress } from '@mui/material';
+import { Backdrop, Box, BoxProps, CircularProgress } from '@mui/material';
 
-type SpinnerType = {
+type SpinnerType = BoxProps & {
   loading?: boolean;
   icon?: JSX.Element;
-  children?: React.ReactNode;
 };
 
-const Spinner = ({ loading, icon, children }: SpinnerType) => {
+const Spinner = ({ loading, icon, children, ...props }: SpinnerType) => {
   return (
-    <div className='relative' style={{ minHeight: 160 }}>
+    <Box sx={{ position: 'relative' }} {...props}>
       {children}
       <Backdrop
         open={loading ?? false}
@@ -20,7 +19,7 @@ const Spinner = ({ loading, icon, children }: SpinnerType) => {
       >
         {icon ?? <CircularProgress />}
       </Backdrop>
-    </div>
+    </Box>
   );
 };
 

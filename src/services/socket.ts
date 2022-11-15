@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
-import { newBalance, ProfileState } from '../reducers/profileSlice';
-import { store } from '../reducers/store';
-import { save } from '../reducers/systemSlice';
+import { newBalance, ProfileState } from 'reducers/profileSlice';
+import { store } from 'reducers/store';
+import { saveSystem } from 'reducers/systemSlice';
 
 export class Socket {
   private socket;
@@ -10,8 +10,8 @@ export class Socket {
   }
 
   connect() {
-    const { accessToken }: ProfileState = store.getState().profile;
-    if (accessToken) {
+    const { isLoggedIn, accessToken }: ProfileState = store.getState().profile;
+    if (isLoggedIn) {
       this.socket.auth = {
         token: `Bearer ${accessToken}`,
       };
@@ -22,23 +22,14 @@ export class Socket {
 
   setupListeners() {
     this.socket.on('STATUS', (data) => {
-      store.dispatch(save(data));
+      store.dispatch(saveSystem(data));
     });
-
     this.socket.on('NEW_SESSION', (data) => {
-      store.dispatch(save(data));
-    });
-    this.socket.on('NEW_BALANCE', (_newBalance) => {
-      store.dispatch(newBalance(_newBalance));
+      store.dispatch(saveSystem(data));
     });
 
-    this.socket.on('NOTIFICATION', ({ content }) => {
-      // const modalStore = useModalStore();
-      // modalStore.openModal(WinPrizeModal, { content });
-    });
-
-    this.socket.on('connect_error', (error) => {
-      console.log(error);
+    this.socket.on('NEW_BALANCE', (balance) => {
+      store.dispatch(newBalance(balance));
     });
   }
 }

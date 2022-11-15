@@ -1,6 +1,6 @@
 import {} from '@mui/icons-material';
 import { DialogContent, DialogTitle } from '@mui/material';
-import { CloseButton } from '../../components';
+import { CloseButton } from 'components';
 
 const Deposited = ({ onClose }: any) => {
   return (

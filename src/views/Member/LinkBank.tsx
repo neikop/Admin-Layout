@@ -4,8 +4,8 @@ import { DialogContent, DialogTitle, TextField } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { Controller, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
-import { CloseButton } from '../../components';
-import { transactionService } from '../../services';
+import { CloseButton } from 'components';
+import { transactionService } from 'services';
 
 const LinkBank = ({ onClose }: any) => {
   const { enqueueSnackbar } = useSnackbar();
@@ -30,7 +30,7 @@ const LinkBank = ({ onClose }: any) => {
       <DialogContent>
         <Controller
           name='bankName'
-          defaultValue={''}
+          defaultValue=''
           control={control}
           rules={{ required: 'Bắt buộc', minLength: { value: 6, message: 'Ít nhất 6 ký tự' } }}
           render={({ field, fieldState: { invalid, error } }) => (
@@ -52,7 +52,7 @@ const LinkBank = ({ onClose }: any) => {
         />
         <Controller
           name='bankAccountNumber'
-          defaultValue={''}
+          defaultValue=''
           control={control}
           rules={{ required: 'Bắt buộc', minLength: { value: 6, message: 'Ít nhất 6 ký tự' } }}
           render={({ field, fieldState: { invalid, error } }) => (
@@ -74,7 +74,7 @@ const LinkBank = ({ onClose }: any) => {
         />
         <Controller
           name='bankAccountHolder'
-          defaultValue={''}
+          defaultValue=''
           control={control}
           rules={{ required: 'Bắt buộc', minLength: { value: 6, message: 'Ít nhất 6 ký tự' } }}
           render={({ field, fieldState: { invalid, error } }) => (

@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { useSelector } from 'react-redux';
-import { profileSelector } from '../../reducers/profileSlice';
-import { betService } from '../../services';
+import { profileSelector } from 'reducers/profileSlice';
+import { betService } from 'services';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 const PopupBet = ({ item, onClose }: any) => {

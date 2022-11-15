@@ -17,7 +17,7 @@ const systemSlice = createSlice({
   },
 });
 
-export const { save } = systemSlice.actions;
+export const { save: saveSystem } = systemSlice.actions;
 
 export const systemSelector = ({ system }: RootState) => system;
 

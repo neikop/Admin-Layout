@@ -1,22 +1,15 @@
-import Forgot from '../views/Member/Forgot';
-import Login from '../views/Member/Login';
-import Register from '../views/Member/Register';
+import { LoginScreen, RegisterScreen } from 'views/Auth';
 
 const authRoute = {
   login: {
     path: '/dang-nhap',
     url: '/auth/dang-nhap',
-    component: Login,
-  },
-  forgot: {
-    path: '/forgot',
-    url: '/auth/forgot',
-    component: Forgot,
+    component: LoginScreen,
   },
   register: {
     path: '/dang-ky',
     url: '/auth/dang-ky',
-    component: Register,
+    component: RegisterScreen,
   },
 };
 

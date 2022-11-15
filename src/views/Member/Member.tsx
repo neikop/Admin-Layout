@@ -2,7 +2,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Box, Button, Dialog } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { profileSelector, signOut } from '../../reducers/profileSlice';
+import { profileSelector, signOut } from 'reducers/profileSlice';
 import Deposit from './Deposit';
 import LinkBank from './LinkBank';
 import Withdraw from './Withdraw';
@@ -100,9 +100,6 @@ const Member = () => {
       </Box>
 
       <Dialog
-        data-aos='fade-left'
-        data-aos-offset='600'
-        data-aos-duration='600'
         open={withdraw}
         fullWidth
         sx={{
@@ -110,7 +107,7 @@ const Member = () => {
             margin: 0,
             minHeight: '100%',
             width: '100%',
-            background: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${require('../../assets/images/background.png')})`,
+            background: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${require('assets/images/App-background.png')})`,
             mixBlendMode: 'normal',
           },
         }}
@@ -118,9 +115,6 @@ const Member = () => {
         <Withdraw onClose={() => setWithdraw(false)} />
       </Dialog>
       <Dialog
-        data-aos='fade-left'
-        data-aos-offset='600'
-        data-aos-duration='600'
         open={linkbank}
         fullWidth
         sx={{
@@ -128,7 +122,7 @@ const Member = () => {
             margin: 0,
             width: '100%',
             minHeight: '100%',
-            background: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${require('../../assets/images/background.png')})`,
+            background: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${require('assets/images/App-background.png')})`,
             mixBlendMode: 'normal',
           },
         }}
@@ -136,9 +130,6 @@ const Member = () => {
         <LinkBank onClose={() => setLinkBank(false)} />
       </Dialog>
       <Dialog
-        data-aos='fade-left'
-        data-aos-offset='600'
-        data-aos-duration='600'
         open={deposit}
         fullWidth
         sx={{
@@ -146,7 +137,7 @@ const Member = () => {
             minHeight: '100%',
             width: '100%',
             margin: 0,
-            background: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${require('../../assets/images/background.png')})`,
+            background: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${require('assets/images/App-background.png')})`,
             mixBlendMode: 'normal',
           },
         }}

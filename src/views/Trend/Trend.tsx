@@ -1,109 +1,90 @@
-import { Box, Grid, Tab, Tabs } from '@mui/material';
-import React, { useState } from 'react';
+import { Avatar, Grid, Tab, Tabs } from '@mui/material';
+import { PerfectScrollbar, Spinner } from 'components';
+import { useTabs } from 'hooks';
+import React from 'react';
 import { useQuery } from 'react-query';
-import { Ball, Spinner } from '../../components';
-import { sessionService } from '../../services';
+import { sessionService } from 'services';
 
 const Trend = () => {
-  const [value, setValue] = useState(1);
-  const [dataSearch, setDataSearch] = useState({ limit: 20, zone: 'LEVEL_3' });
+  const tabs = [
+    { code: 'LEVEL_1', label: 'Level 1' },
+    { code: 'LEVEL_3', label: 'Level 3' },
+    { code: 'LEVEL_5', label: 'Level 5' },
+  ];
+  const [activeTab, onTabChange] = useTabs(tabs);
 
   const { data, isFetching } = useQuery(
-    ['sessionService.getSessions', dataSearch],
-    () => sessionService.getSessions(dataSearch),
+    ['sessionService.getSessions', activeTab],
+    () => sessionService.getSessions({ limit: 20, zone: activeTab }),
     { keepPreviousData: true },
   );
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setDataSearch({ ...dataSearch, zone: newValue === 0 ? 'LEVEL_1' : newValue === 1 ? 'LEVEL_3' : 'LEVEL_5' });
-    setValue(newValue);
-  };
+
   return (
-    <div className='min-h-full'>
-      <Spinner loading={isFetching}>
-        <Box className='flex p-3 justify-center'>
-          {/* <img className='' src={require('../../assets/images/icon.png')} alt='logo' loading='lazy' /> */}
-          <label className='text-xl font-normal'>Xu hướng kỷ lục</label>
-        </Box>
-        <Box
-          className='p-3 '
-          sx={{
-            background: '#ffffffd1',
-            color: '#AFA8EC',
-            minHeight: '100vh',
-            marginBottom: '90px',
-            borderRadius: '25px 25px 0px 0px',
+    <Spinner className='h-full flex flex-col' loading={isFetching}>
+      <div className='h-[60px] flex justify-center items-center'>
+        <span className='font-bold text-xl'>Xu hướng kỷ lục</span>
+      </div>
+      <div className='flex-1 bg-white/80 rounded-t-[24px] p-[12px]'>
+        <Tabs
+          value={activeTab}
+          onChange={onTabChange}
+          textColor='inherit'
+          variant='fullWidth'
+          classes={{
+            flexContainer: 'flex border-b border-divider',
+            indicator: 'h-[5px] rounded-full',
           }}
         >
-          <Box sx={{ width: '100%', marginTop: '39px' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-              <Tabs variant='fullWidth' value={value} onChange={handleChange} aria-label='trend'>
-                <Tab label='Level 1' />
-                <Tab label='Level 3' />
-                <Tab label='Level 5' />
-              </Tabs>
-            </Box>
-          </Box>
-          <Box>
+          {tabs.map((tab) => (
+            <Tab key={tab.code} label={tab.label} value={tab.code} />
+          ))}
+        </Tabs>
+
+        <Grid container className='mt-[12px]'>
+          <Grid
+            item
+            xs={3}
+            className='bg-primary-gradient font-bold rounded-tl-[8px] flex justify-center items-center py-3'
+          >
+            Số kỳ
+          </Grid>
+          <Grid
+            item
+            xs={9}
+            className='border border-l-[0px] font-medium rounded-tr-[8px] flex justify-center items-center py-3'
+          >
+            Kết quả
+          </Grid>
+
+          <PerfectScrollbar style={{ maxHeight: `calc(100vh - 300px)` }}>
             <Grid
               container
               sx={{
-                marginTop: 2,
-                '--Grid-borderWidth': '1px',
-                borderTop: 'var(--Grid-borderWidth) solid',
-                borderLeft: 'var(--Grid-borderWidth) solid',
-                border: 'var(--Grid-borderWidth) solid',
-                borderColor: '#AFA8EC',
-                borderRadius: '10px',
-                overflow: 'hidden',
-                // background: '#140D50',
-                '& > div': {
-                  borderRight: 'var(--Grid-borderWidth) solid',
-                  borderBottom: 'var(--Grid-borderWidth) solid',
-                  borderColor: '#AFA8EC',
-                  padding: 1,
+                '> .MuiGrid-root': {
+                  padding: '6px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                 },
               }}
             >
-              <Grid
-                xs={2}
-                className='font-nomal text-lg text-center'
-                style={{
-                  color: 'white',
-                  background: 'linear-gradient(180deg, #9689ED 0%, #5B4DBE 100%)',
-                }}
-              >
-                Số kỳ
-              </Grid>
-
-              <Grid
-                xs={10}
-                className='font-nomal text-lg text-center'
-                style={{
-                  color: 'white',
-                  background: 'linear-gradient(180deg, #9689ED 0%, #5B4DBE 100%)',
-                }}
-              >
-                Kết quả
-              </Grid>
-              {data?.results.map((e: { result: string; incId: string }) => {
-                return (
-                  <React.Fragment key={e.incId}>
-                    <Grid xs={2} className='text-lg text-center'>
-                      {e.incId}
+              {data?.results.map((item) => (
+                <React.Fragment key={item.id}>
+                  <Grid xs={3} className='font-medium border border-t-[0px]'>
+                    {item.incId}
+                  </Grid>
+                  {item.result.split('').map((value, index) => (
+                    <Grid xs={9 / 5} key={index} className='border border-t-[0px] border-l-[0px]'>
+                      <Avatar className='bg-secondary-gradient font-medium w-[36px] h-[36px]'>{value}</Avatar>
                     </Grid>
-                    {e.result.split('').map((value, index) => (
-                      <Grid xs={2} key={index} display='flex justify-center'>
-                        <Ball value={value}></Ball>
-                      </Grid>
-                    ))}
-                  </React.Fragment>
-                );
-              })}
+                  ))}
+                </React.Fragment>
+              ))}
             </Grid>
-          </Box>
-        </Box>
-      </Spinner>
-    </div>
+          </PerfectScrollbar>
+        </Grid>
+      </div>
+    </Spinner>
   );
 };
 
