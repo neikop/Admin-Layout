@@ -32,7 +32,7 @@ const Transaction = () => {
         </Tabs>
 
         {tabs.map((tab) => (
-          <div key={tab.code} hidden={tab.code !== activeTab} className='flex-1 mt-[16px]'>
+          <div key={tab.code} hidden={tab.code !== activeTab} className='flex-1 mt-[12px]'>
             {tab.component}
           </div>
         ))}

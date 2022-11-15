@@ -20,7 +20,7 @@ const Trend = () => {
   );
 
   return (
-    <Spinner className='h-full flex flex-col' loading={isFetching}>
+    <div className='h-full flex flex-col'>
       <div className='h-[60px] flex justify-center items-center'>
         <span className='font-bold text-xl'>Xu hướng kỷ lục</span>
       </div>
@@ -40,51 +40,34 @@ const Trend = () => {
           ))}
         </Tabs>
 
-        <Grid container className='mt-[12px]'>
-          <Grid
-            item
-            xs={3}
-            className='bg-primary-gradient font-bold rounded-tl-[8px] flex justify-center items-center py-3'
-          >
+        <Grid container className='mt-[12px] text-center'>
+          <Grid item xs={3} className='bg-primary-gradient font-bold rounded-tl-[8px] py-3'>
             Số kỳ
           </Grid>
-          <Grid
-            item
-            xs={9}
-            className='border border-l-[0px] font-medium rounded-tr-[8px] flex justify-center items-center py-3'
-          >
+          <Grid item xs={9} className='border border-l-[0px] font-medium rounded-tr-[8px] py-3'>
             Kết quả
           </Grid>
-
-          <PerfectScrollbar style={{ maxHeight: `calc(100vh - 300px)` }}>
-            <Grid
-              container
-              sx={{
-                '> .MuiGrid-root': {
-                  padding: '6px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                },
-              }}
-            >
-              {data?.results.map((item) => (
-                <React.Fragment key={item.id}>
-                  <Grid xs={3} className='font-medium border border-t-[0px]'>
-                    {item.incId}
-                  </Grid>
-                  {item.result.split('').map((value, index) => (
-                    <Grid xs={9 / 5} key={index} className='border border-t-[0px] border-l-[0px]'>
-                      <Avatar className='bg-secondary-gradient font-medium w-[36px] h-[36px]'>{value}</Avatar>
+          <Spinner loading={isFetching}>
+            <PerfectScrollbar style={{ maxHeight: `calc(100vh - 300px)` }}>
+              <Grid container className='text-center'>
+                {data?.results.map((item) => (
+                  <React.Fragment key={item.id}>
+                    <Grid xs={3} className='font-medium border border-t-[0px] flex justify-center items-center'>
+                      {item.incId}
                     </Grid>
-                  ))}
-                </React.Fragment>
-              ))}
-            </Grid>
-          </PerfectScrollbar>
+                    {item.result.split('').map((value, index) => (
+                      <Grid xs={9 / 5} key={index} className='border border-t-[0px] border-l-[0px] p-[6px]'>
+                        <Avatar className='bg-secondary-gradient font-medium w-[36px] h-[36px]'>{value}</Avatar>
+                      </Grid>
+                    ))}
+                  </React.Fragment>
+                ))}
+              </Grid>
+            </PerfectScrollbar>
+          </Spinner>
         </Grid>
       </div>
-    </Spinner>
+    </div>
   );
 };
 
