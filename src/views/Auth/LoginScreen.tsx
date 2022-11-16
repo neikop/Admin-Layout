@@ -24,6 +24,7 @@ const LoginScreen = () => {
           refreshToken: data.tokens.refresh.token,
           incId: data.player.incId,
           balance: data.player.balance,
+          id: data.player.id,
           username: data.player.username,
         }),
       );
