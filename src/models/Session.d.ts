@@ -3,6 +3,7 @@ type StatusSession = 'FINISHED';
 type SessionType = {
   id: string;
   incId: number;
+  countdown:number;
   totalBet: number;
   status: StatusSession;
   result: string;

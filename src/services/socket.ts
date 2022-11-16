@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 import { newBalance, ProfileState } from 'reducers/profileSlice';
 import { store } from 'reducers/store';
-import { saveSystem } from 'reducers/systemSlice';
+import { initSession, newSession } from 'reducers/systemSlice';
 
 export class Socket {
   private socket;
@@ -22,14 +22,17 @@ export class Socket {
 
   setupListeners() {
     this.socket.on('STATUS', (data) => {
-      store.dispatch(saveSystem(data));
+      console.log('STATUS', data);
+      store.dispatch(initSession(data));
     });
     this.socket.on('NEW_SESSION', (data) => {
-      store.dispatch(saveSystem(data));
+      console.log('NEW_SESSION', data);
+      store.dispatch(newSession(data));
     });
 
-    this.socket.on('NEW_BALANCE', (balance) => {
-      store.dispatch(newBalance(balance));
+    this.socket.on('NEW_BALANCE', (data) => {
+      console.log('NEW_BALANCE', data);
+      store.dispatch(newBalance(data));
     });
   }
 }

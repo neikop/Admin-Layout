@@ -3,6 +3,7 @@ import { Box } from '@mui/material';
 export { default as Ball } from './Ball';
 export { default as CloseButton } from './CloseButton';
 export { default as CountdownTimer } from './CountdownTimer';
+export { default as InputNumber } from './InputNumber';
 export { default as InputPassword } from './InputPassword';
 export { default as Spinner } from './Spinner';
 

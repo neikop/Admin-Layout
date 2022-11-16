@@ -32,7 +32,7 @@ const Trend = () => {
           variant='fullWidth'
           classes={{
             flexContainer: 'flex border-b border-divider',
-            indicator: 'h-[5px] rounded-full',
+            indicator: 'h-[3px] rounded-full',
           }}
         >
           {tabs.map((tab) => (
@@ -55,9 +55,11 @@ const Trend = () => {
                     <Grid xs={3} className='font-medium border border-t-[0px] flex justify-center items-center'>
                       {item.incId}
                     </Grid>
-                    {item.result.split('').map((value, index) => (
+                    {item.result.split('').map((number, index) => (
                       <Grid xs={9 / 5} key={index} className='border border-t-[0px] border-l-[0px] p-[6px]'>
-                        <Avatar className='bg-secondary-gradient font-medium w-[36px] h-[36px]'>{value}</Avatar>
+                        <Avatar className='bg-secondary-gradient font-medium w-[36px] h-[36px] mx-auto'>
+                          {number}
+                        </Avatar>
                       </Grid>
                     ))}
                   </React.Fragment>

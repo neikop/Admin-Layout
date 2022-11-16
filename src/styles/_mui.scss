@@ -1,5 +1,14 @@
 .MuiFormControl-root {
   > label {
+    margin-bottom: 4px;
+  }
+  > .MuiFormHelperText-root {
+    margin: 4px 0px;
+  }
+}
+
+.MuiTextField-root {
+  > label {
     font-size: 20px;
   }
   > .MuiInput-root {
@@ -43,19 +52,65 @@
   }
 }
 
+.MuiButton-root.MuiButton-text,
 .MuiButton-root.MuiButton-contained {
   border-radius: 12px;
   &:hover {
-    filter: brightness(0.85);
+    filter: brightness(0.9);
   }
   &.MuiButton-containedPrimary {
-    background: linear-gradient(180deg, #9689ed 0%, #5b4dbe 100%);
-    color: #fff;
+    @extend .bg-primary-gradient;
   }
   &.MuiButton-containedSecondary {
-    color: #fff;
+    @extend .bg-secondary-gradient;
   }
   > .MuiLoadingButton-loadingIndicator {
     color: #333;
+  }
+}
+
+.MuiDialog-root {
+  > .MuiBackdrop-root {
+    background-color: #000c;
+  }
+  > .MuiDialog-container .MuiDialog-paper {
+    .MuiDialogTitle-root {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .MuiDialogActions-root {
+      justify-content: center;
+      padding-bottom: 20px;
+    }
+  }
+  > .MuiDialog-container .MuiDialog-paper:not(.MuiDialog-paperFullScreen) {
+    border-radius: 24px;
+  }
+  > .MuiDialog-container .MuiDialog-paper.MuiDialog-paperFullScreen {
+    max-width: 600px;
+    background: url(../assets/images/App-background.png) no-repeat center / cover;
+  }
+}
+
+.MuiInputBase-root.MuiOutlinedInput-root {
+  > .MuiOutlinedInput-input {
+    padding: 12px 16px;
+    background-color: #fffb;
+    border-radius: 100px;
+  }
+  > .MuiOutlinedInput-notchedOutline {
+    border-radius: 100px;
+  }
+}
+
+.SnackbarContent-root {
+  .SnackbarItem-message {
+    font-size: 16px;
+    font-family: 'Noto Sans Display';
+    .MuiSvgIcon-root {
+      width: 22px;
+      height: 22px;
+    }
   }
 }

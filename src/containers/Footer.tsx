@@ -16,8 +16,8 @@ const Footer = () => {
           <div>Số dư tài khoản ID: {incId}</div>
           <div className='flex items-center'>
             <div className='text-secondary-main'>
-              {`${balance ?? ''}`.split('').map((char, index) => (
-                <span key={index}>{showBalance ? char : '*'}</span>
+              {`${balance ?? ''}`.split('').map((number, index) => (
+                <span key={index}>{showBalance ? number : '*'}</span>
               ))}
             </div>
             <IconButton className='text-white/80' onClick={() => setShowBalance((prev) => !prev)}>

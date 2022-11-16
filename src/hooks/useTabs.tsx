@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { parse, stringify } from 'qs';
 import { SyntheticEvent, useCallback, useState } from 'react';
 import { useLocation } from 'react-router-dom';

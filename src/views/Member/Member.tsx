@@ -1,150 +1,83 @@
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { Box, Button, Dialog } from '@mui/material';
+import { Button, Dialog } from '@mui/material';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { profileSelector, signOut } from 'reducers/profileSlice';
-import Deposit from './Deposit';
-import LinkBank from './LinkBank';
-import Withdraw from './Withdraw';
+import { useSelector } from 'react-redux';
+import { profileSelector } from 'reducers/profileSlice';
+import { PopupBanking, PopupDeposit, PopupLogout, PopupWithdraw } from './components';
+
 const Member = () => {
-  const { incId, username, balance } = useSelector(profileSelector);
-  const dispatch = useDispatch();
-  const [deposit, setDeposit] = useState(false);
-  const [withdraw, setWithdraw] = useState(false);
-  const [linkbank, setLinkBank] = useState(false);
+  const { incId, balance } = useSelector(profileSelector);
+
+  const [openLogout, setOpenLogout] = useState(false);
+  const [openDeposit, setOpenDeposit] = useState(false);
+  const [openBanking, setOpenBanking] = useState(false);
+  const [openWithdraw, setOpenWithdraw] = useState(false);
 
   return (
-    <>
-      <Box className='flex p-3 justify-center'>
-        <label className='text-xl font-normal'>Tài khoản</label>
-      </Box>
-      <Box className='text-center p-8 rounded flex-col'>
-        <Box className='balancebox'>
-          <label className='py-5 block'>
-            Người dùng : {username} - ID: {incId}
-          </label>
-          <label className='leading-8'>Số dư tài khoản</label>
-          <label className='py-5 block text-6xl'>{balance}</label>
-        </Box>
+    <div className='h-full flex flex-col'>
+      <div className='h-[60px] flex justify-center items-center'>
+        <span className='font-bold text-xl'>Tài khoản</span>
+      </div>
+      <div className='relative mx-[12px]'>
+        <img src={require('assets/images/Cover-background.png')} className='rounded-[24px]' />
+        <div className='absolute inset-5 text-white'>
+          <div className='font-bold'>ID: {incId}</div>
+          <div className='text-center mt-3'>
+            <div>Số dư tài khoản</div>
+            <div className='font-bold text-[48px]'>{balance}</div>
+          </div>
+        </div>
+        <img src={require('assets/images/Cover-sticker.png')} className='absolute top-[-20px] right-[12px] w-[60px]' />
+      </div>
 
-        <Box className='flex justify-between mt-8'>
-          <Button
-            onClick={() => {
-              setDeposit(true);
-            }}
-            variant='text'
-            color='inherit'
-            className='flex-col text-center'
-            sx={{
-              background: 'linear-gradient(180deg, #FF9E7E 0%, #FF5018 100%)',
-              boxShadow: '0px 4px 4px rgba(236, 79, 29, 0.3)',
-              borderRadius: '24px',
-              color: '#fff',
-              opacity: '0.8',
-              minWidth: '47%',
-              padding: '35px',
-            }}
-          >
-            Nạp Tiền
-          </Button>
-
-          <Button
-            onClick={() => {
-              setWithdraw(true);
-            }}
-            variant='text'
-            color='inherit'
-            className='flex-col text-center'
-            sx={{
-              background: 'linear-gradient(180deg, #FF9E7E 0%, #FF5018 100%)',
-              boxShadow: '0px 4px 4px rgba(236, 79, 29, 0.3)',
-              borderRadius: '24px',
-              color: '#fff',
-              opacity: '0.8',
-              padding: '35px',
-              minWidth: '47%',
-            }}
-          >
-            Rút Tiền
-          </Button>
-        </Box>
+      <div className='h-[80px] flex items-stretch gap-6 mx-6 my-6'>
         <Button
-          onClick={() => {
-            setLinkBank(true);
-          }}
           fullWidth
-          variant='text'
-          className='justify-between'
-          sx={{
-            background: '#FFFFFFd1',
-            borderRadius: '24px',
-            padding: '20px',
-            opacity: '0.8',
-            justifyContent: 'space-between',
-            marginTop: 4,
-          }}
+          variant='contained'
+          color='secondary'
+          className='rounded-[24px]'
+          onClick={() => setOpenDeposit(true)}
         >
-          Liên kết ngân hàng
+          <div>Nạp tiền</div>
+        </Button>
+        <Button
+          fullWidth
+          variant='contained'
+          color='secondary'
+          className='rounded-[24px]'
+          onClick={() => setOpenWithdraw(true)}
+        >
+          <div>Rút tiền</div>
+        </Button>
+      </div>
+      <div className='h-[72px] flex items-stretch gap-6 mx-6'>
+        <Button
+          fullWidth
+          className='bg-white/80 hover:brightness-90 rounded-[24px] flex justify-between px-6'
+          onClick={() => setOpenBanking(true)}
+        >
+          <span>Liên kết ngân hàng</span>
           <ArrowForwardIosIcon fontSize='small' />
         </Button>
-        <Button
-          onClick={() => {
-            dispatch(signOut({}));
-          }}
-          variant='text'
-          className='text-cente'
-          sx={{ marginTop: '20vh' }}
-        >
-          Đăng xuất
-        </Button>
-      </Box>
+      </div>
 
-      <Dialog
-        open={withdraw}
-        fullWidth
-        sx={{
-          '& .MuiPaper-root': {
-            margin: 0,
-            minHeight: '100%',
-            width: '100%',
-            background: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${require('assets/images/App-background.png')})`,
-            mixBlendMode: 'normal',
-          },
-        }}
-      >
-        <Withdraw onClose={() => setWithdraw(false)} />
+      <div className='flex-1 flex flex-col justify-end items-center pb-10'>
+        <Button onClick={() => setOpenLogout(true)}>Đăng xuất</Button>
+      </div>
+
+      <Dialog open={openLogout} onClose={() => setOpenLogout(false)}>
+        <PopupLogout onClose={() => setOpenLogout(false)} />
       </Dialog>
-      <Dialog
-        open={linkbank}
-        fullWidth
-        sx={{
-          '& .MuiPaper-root': {
-            margin: 0,
-            width: '100%',
-            minHeight: '100%',
-            background: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${require('assets/images/App-background.png')})`,
-            mixBlendMode: 'normal',
-          },
-        }}
-      >
-        <LinkBank onClose={() => setLinkBank(false)} />
+      <Dialog open={openDeposit} onClose={() => setOpenDeposit(false)}>
+        <PopupDeposit onClose={() => setOpenDeposit(false)} />
       </Dialog>
-      <Dialog
-        open={deposit}
-        fullWidth
-        sx={{
-          '& .MuiPaper-root': {
-            minHeight: '100%',
-            width: '100%',
-            margin: 0,
-            background: `linear-gradient(0deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(${require('assets/images/App-background.png')})`,
-            mixBlendMode: 'normal',
-          },
-        }}
-      >
-        <Deposit onClose={() => setDeposit(false)} />
+      <Dialog open={openBanking} fullScreen>
+        <PopupBanking onClose={() => setOpenBanking(false)} />
       </Dialog>
-    </>
+      <Dialog open={openWithdraw} fullScreen>
+        <PopupWithdraw onClose={() => setOpenWithdraw(false)} />
+      </Dialog>
+    </div>
   );
 };
 

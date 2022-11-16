@@ -25,13 +25,7 @@ const onError = async (error: AxiosError) => {
     if (status === 401) {
       store.dispatch(signOut({}));
     } else {
-      let message = '';
-      // let [, message] = response?.data?.errors["_"] || response?.data?.error[""];
-      if (message.startsWith('message: ')) {
-        message = message.slice(9);
-        store.dispatch(openAlert({ message, variant: 'error' }));
-        return Promise.reject(message);
-      }
+      store.dispatch(openAlert({ message: 'Đã có lỗi xảy ra', variant: 'error' }));
     }
   }
   return Promise.reject(error);

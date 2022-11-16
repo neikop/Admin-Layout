@@ -39,7 +39,7 @@ const Menu = () => {
       <Link to={privateRoute.home.path}>
         <Avatar
           className='w-[48px] h-[48px] mt-[-4px] hover:brightness-90 bg-primary-main'
-          style={{ boxShadow: '#0003 0px 4px 8px', cursor: 'pointer' }}
+          style={{ boxShadow: '#0003 0px 4px 8px' }}
         >
           <img src={require('assets/icons/Home.png')} className='w-[22px]' />
         </Avatar>

@@ -23,7 +23,7 @@ const Transaction = () => {
           variant='fullWidth'
           classes={{
             flexContainer: 'flex border-b border-divider',
-            indicator: 'h-[5px] rounded-full',
+            indicator: 'h-[3px] rounded-full',
           }}
         >
           {tabs.map((tab) => (
