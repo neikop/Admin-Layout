@@ -27,7 +27,7 @@ const Chat = () => {
       </Spinner>
 
       <LiveChatWidget
-        license={process.env.REACT_APP_LIVE_CHAT_LICENSE! ?? '14395797'}
+        license={process.env.REACT_APP_LIVE_CHAT_LICENSE!}
         visibility={visible}
         onReady={() => setIsReady(true)}
         onVisibilityChanged={({ visibility }) => setVisible(visibility)}
