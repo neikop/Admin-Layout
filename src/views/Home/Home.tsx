@@ -98,85 +98,85 @@ const Home = () => {
           ))}
         </Tabs>
 
-        <div className='flex justify-center gap-2 my-3'>
-          {GAMES.map((item, index) => (
-            <Button
-              key={index}
-              variant={activeGame === item.code ? 'contained' : 'text'}
-              color={activeGame === item.code ? 'primary' : 'inherit'}
-              size='small'
-              className='w-[90px]'
-              onClick={() => setActiveGame(item.code)}
-            >
-              {item.label}
-            </Button>
-          ))}
-        </div>
-
-        {isOneToFive && (
-          <>
-            <div className='flex justify-center mb-2'>
-              <ButtonGroup>
-                {GATES.map((item, index) => (
-                  <Button
-                    variant={activeGate === item.code ? 'contained' : 'outlined'}
-                    key={index}
-                    onClick={() => setActiveGate(item.code)}
-                  >
-                    {item.label}
-                  </Button>
-                ))}
-              </ButtonGroup>
+        <PerfectScrollbar style={{ maxHeight: `calc(100vh - 330px)` }}>
+          <div>
+            <div className='flex justify-center gap-2 my-3'>
+              {GAMES.map((item, index) => (
+                <Button
+                  key={index}
+                  variant={activeGame === item.code ? 'contained' : 'text'}
+                  color={activeGame === item.code ? 'primary' : 'inherit'}
+                  size='small'
+                  className='w-[90px]'
+                  onClick={() => setActiveGame(item.code)}
+                >
+                  {item.label}
+                </Button>
+              ))}
             </div>
-            <PerfectScrollbar style={{ maxHeight: `calc(100vh - 430px)`, width: '100%' }}>
-              <Grid container className='border-t'>
-                {ONE_TO_FIVE.map((item, index) => (
-                  <Grid
-                    item
-                    xs={3 * item.colspan}
-                    key={index}
-                    className='border border-t-[0px] text-center pt-1 pb-2 cursor-pointer hover:bg-black/5'
-                    style={{ borderLeft: index % (item.cross > 2 ? 4 : 2) ? 'none' : '' }}
-                    onClick={() => {
-                      setOpenBet(true);
-                      setActiveItem(activeGate + item.gate);
-                    }}
-                  >
-                    <div className='text-primary-dark text-[24px] font-medium'>{item.label}</div>
-                    <div className='text-primary-light'>{item.cross}</div>
-                  </Grid>
-                ))}
-              </Grid>
-            </PerfectScrollbar>
-          </>
-        )}
-        {isOneToFive || (
-          <Grid container>
-            <Grid item xs={12} className='bg-primary-gradient font-bold text-center rounded-t-[8px] p-2'>
-              Tổng 3 hàng cuối cùng
-            </Grid>
-            <PerfectScrollbar style={{ maxHeight: `calc(100vh - 430px)`, width: '100%' }}>
+
+            {isOneToFive && (
+              <>
+                <div className='flex justify-center mb-2'>
+                  <ButtonGroup>
+                    {GATES.map((item, index) => (
+                      <Button
+                        variant={activeGate === item.code ? 'contained' : 'outlined'}
+                        key={index}
+                        onClick={() => setActiveGate(item.code)}
+                      >
+                        {item.label}
+                      </Button>
+                    ))}
+                  </ButtonGroup>
+                </div>
+                <Grid container className='border-t'>
+                  {ONE_TO_FIVE.map((item, index) => (
+                    <Grid
+                      item
+                      xs={3 * item.colspan}
+                      key={index}
+                      className='border border-t-[0px] text-center pt-1 pb-2 cursor-pointer hover:bg-black/5'
+                      style={{ borderLeft: index % (item.cross > 2 ? 4 : 2) ? 'none' : '' }}
+                      onClick={() => {
+                        setOpenBet(true);
+                        setActiveItem(activeGate + item.gate);
+                      }}
+                    >
+                      <div className='text-primary-dark text-[24px] font-medium'>{item.label}</div>
+                      <div className='text-primary-light'>{item.cross}</div>
+                    </Grid>
+                  ))}
+                </Grid>
+              </>
+            )}
+            {isOneToFive || (
               <Grid container>
-                {TONG_HOA.map((item, index) => (
-                  <Grid
-                    item
-                    xs={3}
-                    key={index}
-                    className='border border-t-[0px] text-center pt-1 pb-2 cursor-pointer hover:bg-black/5'
-                    style={{ borderLeft: index % 4 ? 'none' : '' }}
-                    onClick={() => {
-                      setOpenBet(true);
-                      setActiveItem(item.gate);
-                    }}
-                  >
-                    <div className='text-primary-dark text-[24px] font-medium'>{item.gate}</div>
-                    <div className='text-primary-light'>{item.cross}</div>
-                  </Grid>
-                ))}
+                <Grid item xs={12} className='bg-primary-gradient font-bold text-center rounded-t-[8px] p-2'>
+                  Tổng 3 hàng cuối cùng
+                </Grid>
+                <Grid container>
+                  {TONG_HOA.map((item, index) => (
+                    <Grid
+                      item
+                      xs={3}
+                      key={index}
+                      className='border border-t-[0px] text-center pt-1 pb-2 cursor-pointer hover:bg-black/5'
+                      style={{ borderLeft: index % 4 ? 'none' : '' }}
+                      onClick={() => {
+                        setOpenBet(true);
+                        setActiveItem(item.gate);
+                      }}
+                    >
+                      <div className='text-primary-dark text-[24px] font-medium'>{item.gate}</div>
+                      <div className='text-primary-light'>{item.cross}</div>
+                    </Grid>
+                  ))}
+                </Grid>
               </Grid>
-            </PerfectScrollbar>
-          </Grid>
-        )}
+            )}
+          </div>
+        </PerfectScrollbar>
       </div>
 
       <Dialog open={openBet} onClose={() => setOpenBet(false)}>
