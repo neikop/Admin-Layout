@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
+import { API_URL } from 'env';
 import { openAlert } from 'reducers/notificationSlice';
 import { ProfileState, signOut } from 'reducers/profileSlice';
 import { store } from 'reducers/store';
@@ -32,7 +33,7 @@ const onError = async (error: AxiosError) => {
   return Promise.reject(error);
 };
 
-const client = axios.create({ baseURL: process.env.REACT_APP_API_URI });
+const client = axios.create({ baseURL: API_URL });
 client.interceptors.request.use(beforeRequest);
 client.interceptors.response.use(({ data }) => data, onError);
 

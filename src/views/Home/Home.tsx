@@ -1,6 +1,6 @@
 import { AccessTimeOutlined, InfoOutlined } from '@mui/icons-material';
 import { Avatar, Button, ButtonGroup, Dialog, Grid, Tab, Tabs } from '@mui/material';
-import { PerfectScrollbar } from 'components';
+import { AppLogo, PerfectScrollbar } from 'components';
 import { useTabs } from 'hooks';
 import { useMemo, useState } from 'react';
 import { default as Countdown } from 'react-countdown';
@@ -47,7 +47,7 @@ const Home = () => {
   return (
     <div className='h-full flex flex-col'>
       <div className='min-h-[60px] flex justify-between items-center px-3'>
-        <img src={require('assets/icons/Binglo-icon.png')} className='w-[32px]' />
+        <AppLogo size={32} />
         <div>
           Kết quả kỳ
           <span className='bg-primary-gradient font-bold px-2 py-0.5 mx-1 rounded-full'>{lastSession.incId}</span>

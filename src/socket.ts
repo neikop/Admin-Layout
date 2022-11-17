@@ -3,11 +3,12 @@ import { newBalance, ProfileState } from 'reducers/profileSlice';
 import { store } from 'reducers/store';
 import { initSession, newSession, SessionNew, SystemState } from 'reducers/systemSlice';
 import { openAlert } from 'reducers/notificationSlice';
+import { API_URL } from 'env';
 
 export class Socket {
   private socket;
   constructor() {
-    this.socket = io(`${process.env.REACT_APP_API_URI}`, { autoConnect: false });
+    this.socket = io(API_URL!, { autoConnect: false });
   }
 
   connect() {

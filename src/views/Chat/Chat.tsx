@@ -1,12 +1,14 @@
 import { LiveChatWidget } from '@livechat/widget-react';
 import { Button } from '@mui/material';
 import { Spinner } from 'components';
+import { LIVE_CHAT_LICENSE } from 'env';
 import { useState } from 'react';
 
 type VisibilityType = 'maximized' | 'minimized' | 'hidden';
+const isLicense = !!LIVE_CHAT_LICENSE;
 
 const Chat = () => {
-  const [isReady, setIsReady] = useState(false);
+  const [isReady, setIsReady] = useState(!isLicense);
   const [visible, setVisible] = useState<VisibilityType>('maximized');
 
   return (
@@ -26,12 +28,16 @@ const Chat = () => {
         </div>
       </Spinner>
 
-      <LiveChatWidget
-        license={process.env.REACT_APP_LIVE_CHAT_LICENSE!}
-        visibility={visible}
-        onReady={() => setIsReady(true)}
-        onVisibilityChanged={({ visibility }) => setVisible(visibility)}
-      />
+      {isLicense ? (
+        <LiveChatWidget
+          license={LIVE_CHAT_LICENSE!}
+          visibility={visible}
+          onReady={() => setIsReady(true)}
+          onVisibilityChanged={({ visibility }) => setVisible(visibility)}
+        />
+      ) : (
+        <div className='text-center text-error'>Missing Live Chat License</div>
+      )}
     </div>
   );
 };
