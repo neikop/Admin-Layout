@@ -34,7 +34,6 @@ export class Socket {
     });
     this.socket.on('NOTIFICATION', (data) => {
       console.log('NOTIFICATION', data);
-      // store.dispatch(newBalance(data));
     });
   }
 }
