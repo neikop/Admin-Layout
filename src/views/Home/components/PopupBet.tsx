@@ -19,7 +19,7 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const { control, handleSubmit, setValue, watch } = useForm({ mode: 'onChange' });
-  const { amount = 10 } = watch();
+  const { amount = 100 } = watch();
 
   const { mutate: createBet, isLoading } = useMutation(betService.bet, {
     onSuccess: () => {
@@ -45,7 +45,7 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
           <Controller
             control={control}
             name='amount'
-            defaultValue={100}
+            defaultValue={amount}
             rules={{
               required: 'Số tiền đặt không được để trống',
               min: { value: 9, message: 'Số tiền rút tối thiểu là 10' },
