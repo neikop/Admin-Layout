@@ -6,8 +6,8 @@ import { useMemo, useState } from 'react';
 import { default as Countdown } from 'react-countdown';
 import { useSelector } from 'react-redux';
 import { systemSelector } from 'reducers/systemSlice';
-import { PopupBet } from '.';
-import { ONE_TO_FIVE, TONG_HOA } from './map';
+import { PopupBet } from './components';
+import { ONE_TO_FIVE, TONG_HOA } from './components/games';
 
 const TABS = [
   { code: 'LEVEL_1', label: 'Level 1' },

@@ -5,7 +5,7 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { profileSelector } from 'reducers/profileSlice';
 import { systemSelector } from 'reducers/systemSlice';
 import { authRoute, privateRoute } from 'routes';
-import { Socket } from 'services/socket';
+import { Socket } from 'socket';
 
 const PrivateLayout = () => {
   const navigator = useNavigate();

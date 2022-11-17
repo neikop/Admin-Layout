@@ -22,17 +22,19 @@ export class Socket {
 
   setupListeners() {
     this.socket.on('STATUS', (data) => {
-      console.log('STATUS', data);
       store.dispatch(initSession(data));
     });
     this.socket.on('NEW_SESSION', (data) => {
-      console.log('NEW_SESSION', data);
       store.dispatch(newSession(data));
     });
 
     this.socket.on('NEW_BALANCE', (data) => {
       console.log('NEW_BALANCE', data);
       store.dispatch(newBalance(data));
+    });
+    this.socket.on('NOTIFICATION', (data) => {
+      console.log('NOTIFICATION', data);
+      // store.dispatch(newBalance(data));
     });
   }
 }
