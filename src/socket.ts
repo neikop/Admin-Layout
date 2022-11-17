@@ -1,14 +1,17 @@
-import { io } from 'socket.io-client';
+import { API_URL } from 'env';
 import { newBalance, ProfileState } from 'reducers/profileSlice';
 import { store } from 'reducers/store';
 import { initSession, newSession, SessionNew, SystemState } from 'reducers/systemSlice';
-import { openAlert } from 'reducers/notificationSlice';
-import { API_URL } from 'env';
+import { io } from 'socket.io-client';
 
 export class Socket {
   private socket;
   constructor() {
     this.socket = io(API_URL!, { autoConnect: false });
+  }
+
+  instance() {
+    return this.socket;
   }
 
   connect() {
@@ -22,6 +25,12 @@ export class Socket {
     }
   }
 
+  disconnect() {
+    try {
+      this.socket.disconnect();
+    } catch {}
+  }
+
   setupListeners() {
     this.socket.on('STATUS', (data: SystemState) => {
       store.dispatch(initSession(data));
@@ -33,10 +42,6 @@ export class Socket {
 
     this.socket.on('NEW_BALANCE', (balance: number) => {
       store.dispatch(newBalance(balance));
-    });
-
-    this.socket.on('NOTIFICATION', (data: NotificationType) => {
-      store.dispatch(openAlert({ message: data.content }));
     });
   }
 }

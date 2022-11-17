@@ -74,6 +74,8 @@
     background-color: #000c;
   }
   > .MuiDialog-container .MuiDialog-paper {
+    max-width: 480px;
+
     .MuiDialogTitle-root {
       font-size: 20px;
       font-weight: 600;
@@ -105,6 +107,8 @@
 }
 
 .SnackbarContent-root {
+  max-width: 560px;
+
   .SnackbarItem-message {
     font-size: 16px;
     font-family: 'Noto Sans Display';
