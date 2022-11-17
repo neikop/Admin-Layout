@@ -12,7 +12,7 @@ type PopupProps = PopupController & {};
 
 const PopupBanking = ({ onClose }: PopupProps) => {
   const { enqueueSnackbar } = useSnackbar();
-  const { id } = useSelector(profileSelector);
+  const { id: playerId } = useSelector(profileSelector);
 
   const { control, handleSubmit } = useForm({ mode: 'onChange' });
 
@@ -26,7 +26,7 @@ const PopupBanking = ({ onClose }: PopupProps) => {
   const handleClickSubmit = () => {
     handleSubmit((values) => {
       updateBank({
-        playerId: id,
+        playerId,
         body: values,
       });
     })();

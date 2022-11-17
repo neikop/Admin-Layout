@@ -5,7 +5,7 @@ import { InputNumber } from 'components';
 import { useSnackbar } from 'notistack';
 import { Controller, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
-import { betService } from 'services';
+import { transactionService } from 'services';
 
 type PopupProps = PopupController & {
   item: {
@@ -21,7 +21,7 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
   const { control, handleSubmit, setValue, watch } = useForm({ mode: 'onChange' });
   const { amount = 100 } = watch();
 
-  const { mutate: createBet, isLoading } = useMutation(betService.bet, {
+  const { mutate: createBet, isLoading } = useMutation(transactionService.createBet, {
     onSuccess: () => {
       enqueueSnackbar('Đặt cược thành công');
       onClose();

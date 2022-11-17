@@ -16,7 +16,7 @@ const Footer = () => {
           <div>Số dư tài khoản ID: {incId}</div>
           <div className='flex items-center'>
             <div className='text-secondary-main'>
-              {`${balance ?? ''}`.split('').map((number, index) => (
+              {`${balance}`.split('').map((number, index) => (
                 <span key={index}>{showBalance ? number : '*'}</span>
               ))}
             </div>

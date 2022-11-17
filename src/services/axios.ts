@@ -21,11 +21,12 @@ const beforeRequest = (config: AxiosRequestConfig) => {
 const onError = async (error: AxiosError) => {
   const { response } = error;
   if (response) {
-    const { status } = response;
+    const { status, data } = response;
     if (status === 401) {
       store.dispatch(signOut({}));
     } else {
-      store.dispatch(openAlert({ message: 'Đã có lỗi xảy ra', variant: 'error' }));
+      const message = (data as any).message ?? 'Đã có lỗi xảy ra';
+      store.dispatch(openAlert({ message, variant: 'error' }));
     }
   }
   return Promise.reject(error);

@@ -16,13 +16,10 @@ const RegisterScreen = () => {
   const { password } = watch();
 
   const { mutate: register, isLoading } = useMutation(authService.register, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       enqueueSnackbar('Đăng ký thành công', { variant: 'success' });
       navigator(authRoute.login.url, { replace: true });
       reset();
-    },
-    onError: (error: any) => {
-      enqueueSnackbar(error.response.data.message, { variant: 'error' });
     },
   });
 

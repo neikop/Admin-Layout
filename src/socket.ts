@@ -1,7 +1,8 @@
 import { io } from 'socket.io-client';
 import { newBalance, ProfileState } from 'reducers/profileSlice';
 import { store } from 'reducers/store';
-import { initSession, newSession } from 'reducers/systemSlice';
+import { initSession, newSession, SessionNew, SystemState } from 'reducers/systemSlice';
+import { openAlert } from 'reducers/notificationSlice';
 
 export class Socket {
   private socket;
@@ -21,19 +22,20 @@ export class Socket {
   }
 
   setupListeners() {
-    this.socket.on('STATUS', (data) => {
+    this.socket.on('STATUS', (data: SystemState) => {
       store.dispatch(initSession(data));
     });
-    this.socket.on('NEW_SESSION', (data) => {
+
+    this.socket.on('NEW_SESSION', (data: SessionNew) => {
       store.dispatch(newSession(data));
     });
 
-    this.socket.on('NEW_BALANCE', (data) => {
-      console.log('NEW_BALANCE', data);
-      store.dispatch(newBalance(data));
+    this.socket.on('NEW_BALANCE', (balance: number) => {
+      store.dispatch(newBalance(balance));
     });
-    this.socket.on('NOTIFICATION', (data) => {
-      console.log('NOTIFICATION', data);
+
+    this.socket.on('NOTIFICATION', (data: NotificationType) => {
+      store.dispatch(openAlert({ message: data.content }));
     });
   }
 }

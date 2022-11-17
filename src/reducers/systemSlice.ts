@@ -1,11 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
-type SessionMap = {
-  [key: string]: SessionType;
-};
-
-type SessionNew = {
+export type SessionNew = {
   [key: string]: {
     currentSession: SessionType;
     lastSession: SessionType;
@@ -14,8 +10,12 @@ type SessionNew = {
 
 export type SystemState = {
   isReady: boolean;
-  currentSessions: SessionMap;
-  lastSessions: SessionMap;
+  currentSessions: {
+    [key: string]: SessionType;
+  };
+  lastSessions: {
+    [key: string]: SessionType;
+  };
 };
 
 const systemSlice = createSlice({

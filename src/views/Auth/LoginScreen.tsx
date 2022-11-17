@@ -16,16 +16,13 @@ const LoginScreen = () => {
   const { control, handleSubmit } = useForm({ mode: 'onChange' });
 
   const { mutate: login, isLoading } = useMutation(authService.login, {
-    onSuccess: (data) => {
+    onSuccess: ({ tokens, player }) => {
       enqueueSnackbar('Đăng nhập thành công');
       dispatch(
         signIn({
-          accessToken: data.tokens.access.token,
-          refreshToken: data.tokens.refresh.token,
-          incId: data.player.incId,
-          balance: data.player.balance,
-          id: data.player.id,
-          username: data.player.username,
+          accessToken: tokens.access.token,
+          refreshToken: tokens.refresh.token,
+          ...player,
         }),
       );
     },
@@ -41,7 +38,7 @@ const LoginScreen = () => {
     <div className='flex-1 flex flex-col gap-[40px] bg-white/80 rounded-t-[24px] px-[24px] py-[36px]'>
       <Controller
         name='username'
-        defaultValue='monad'
+        defaultValue=''
         control={control}
         rules={{
           required: 'Tài khoản không được để trống',
@@ -59,7 +56,7 @@ const LoginScreen = () => {
       />
       <Controller
         name='password'
-        defaultValue='aa123123'
+        defaultValue=''
         control={control}
         rules={{
           required: 'Mật khẩu không được để trống',

@@ -1,16 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
-export type ProfileState = {
+export type ProfileState = UserType & {
   isLoggedIn: boolean;
   accessToken?: string;
   refreshToken?: string;
-  incId?: string;
-  balance?: number;
-  username?: string;
-  id?: string;
-  email?: string;
-  emailVerified?: boolean;
 };
 
 export const profileSlice = createSlice({
@@ -20,7 +14,7 @@ export const profileSlice = createSlice({
   } as ProfileState,
   reducers: {
     signIn: (state, { payload }) => {
-      const profile = { ...state, ...payload, isLoggedIn: true };
+      const profile = { ...payload, isLoggedIn: true };
       localStorage.setItem('profile', JSON.stringify(profile));
       return profile;
     },
@@ -28,8 +22,8 @@ export const profileSlice = createSlice({
       localStorage.removeItem('profile');
       return { isLoggedIn: false };
     },
-    newBalance: (state, { payload }) => {
-      const profile = { ...state, ...payload };
+    newBalance: (state, { payload }: { payload: number }) => {
+      const profile = { ...state, balance: payload };
       localStorage.setItem('profile', JSON.stringify(profile));
       return profile;
     },
