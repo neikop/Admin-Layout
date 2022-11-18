@@ -10,6 +10,12 @@ type UserType = {
   totalBet?: number;
   totalDeposit?: number;
   totalWithdrawal?: number;
+} & BankType;
+
+type BankType = {
+  bankAccountHolder?: string;
+  bankAccountNumber?: string;
+  bankName?: string;
 };
 
 type LoginResponse = {

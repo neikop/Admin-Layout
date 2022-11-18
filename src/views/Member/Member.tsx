@@ -1,4 +1,3 @@
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { Button, Dialog } from '@mui/material';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -11,7 +10,6 @@ const Member = () => {
 
   const [openLogout, setOpenLogout] = useState(false);
   const [openDeposit, setOpenDeposit] = useState(false);
-  const [openBanking, setOpenBanking] = useState(false);
   const [openWithdraw, setOpenWithdraw] = useState(false);
 
   return (
@@ -51,15 +49,9 @@ const Member = () => {
           <div>Rút tiền</div>
         </Button>
       </div>
-      <div className='h-[72px] flex items-stretch gap-6 mx-6'>
-        <Button
-          fullWidth
-          className='bg-white/80 hover:brightness-90 rounded-[24px] flex justify-between px-6'
-          onClick={() => setOpenBanking(true)}
-        >
-          <span>Liên kết ngân hàng</span>
-          <ArrowForwardIosIcon fontSize='small' />
-        </Button>
+
+      <div className='mx-6'>
+        <PopupBanking />
       </div>
 
       <div className='flex-1 flex flex-col justify-end items-center pb-10'>
@@ -71,9 +63,6 @@ const Member = () => {
       </Dialog>
       <Dialog open={openDeposit} onClose={() => setOpenDeposit(false)}>
         <PopupDeposit onClose={() => setOpenDeposit(false)} />
-      </Dialog>
-      <Dialog open={openBanking} fullScreen>
-        <PopupBanking onClose={() => setOpenBanking(false)} />
       </Dialog>
       <Dialog open={openWithdraw} fullScreen>
         <PopupWithdraw onClose={() => setOpenWithdraw(false)} />

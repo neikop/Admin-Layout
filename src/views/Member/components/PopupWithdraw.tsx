@@ -3,8 +3,9 @@ import { Button, DialogActions, DialogContent, DialogTitle, FormControl, TextFie
 import { CloseButton, InputNumber } from 'components';
 import { useSnackbar } from 'notistack';
 import { Controller, useForm } from 'react-hook-form';
-import { useMutation } from 'react-query';
-import { transactionService } from 'services';
+import { useMutation, useQuery } from 'react-query';
+import { authService, transactionService } from 'services';
+import { PopupBanking } from '.';
 
 type PopupProps = PopupController & {};
 
@@ -12,6 +13,9 @@ const PopupWithdraw = ({ onClose }: PopupProps) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const { control, handleSubmit } = useForm({ mode: 'onChange' });
+  const { data: profile, isSuccess } = useQuery(['authService.getProfile'], () => authService.getProfile(), {
+    staleTime: 0,
+  });
 
   const { mutate: createWithdraw, isLoading } = useMutation(transactionService.createWithdraw, {
     onSuccess: () => {
@@ -30,7 +34,7 @@ const PopupWithdraw = ({ onClose }: PopupProps) => {
     <>
       <CloseButton onClick={onClose} />
       <DialogTitle>Rút tiền</DialogTitle>
-      <DialogContent className='space-y-4'>
+      <DialogContent>
         <Controller
           control={control}
           name='amount'
@@ -55,6 +59,26 @@ const PopupWithdraw = ({ onClose }: PopupProps) => {
             </FormControl>
           )}
         />
+        <div className='mt-[40px]'>
+          {isSuccess &&
+            (!profile?.bankAccountNumber ? (
+              <>
+                <div className='text-error mb-3'>* Chưa liên kết ngân hàng</div>
+                <div>
+                  <PopupBanking />
+                </div>
+              </>
+            ) : (
+              <div className='bg-white rounded-[24px]'>
+                <div className='font-bold text-primary-main border-b px-[24px] py-[20px]'>Thông tin ngân hàng</div>
+                <div className='px-[24px] py-[20px] space-y-1'>
+                  <div>{profile.bankName}</div>
+                  <div>{profile.bankAccountNumber}</div>
+                  <div>{profile.bankAccountHolder}</div>
+                </div>
+              </div>
+            ))}
+        </div>
       </DialogContent>
       <DialogActions>
         <div className='flex flex-col gap-1'>
