@@ -24,7 +24,7 @@ const TabWithdraw = () => {
               <TableRow key={item.id}>
                 <TableCell>{DateTime.fromISO(item.createdAt).toFormat('HH:ss dd/MM/yyyy')}</TableCell>
                 <TableCell align='right' className='text-success'>
-                  {item.amount}
+                  {formatBalance(item.amount)}
                 </TableCell>
                 <TableCell align='right'>
                   {item.status === 'APPROVED' ? (

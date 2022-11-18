@@ -1,4 +1,5 @@
 type StatusSession = 'FINISHED';
+type ZoneType = 'LEVEL_1' | 'LEVEL_3' | 'LEVEL_5';
 
 type SessionType = {
   id: string;
@@ -7,7 +8,7 @@ type SessionType = {
   totalBet: number;
   status: StatusSession;
   result: string;
-  zone: string;
+  zone: ZoneType;
   startTime: string;
   endTime: string;
   createdAt: string;

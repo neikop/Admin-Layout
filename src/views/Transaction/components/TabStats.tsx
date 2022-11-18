@@ -1,11 +1,16 @@
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Dialog, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import { PerfectScrollbar, Spinner } from 'components';
+import { useState } from 'react';
 import { useQuery } from 'react-query';
 import { sessionService } from 'services';
 import { formatBalance } from 'utils/common';
+import { PopupStatInfo } from '.';
 
 const TabStats = () => {
   const { data, isFetching } = useQuery(['sessionService.getGeneralStats'], () => sessionService.getGeneralStats());
+
+  const [openInfo, setOpenInfo] = useState(false);
+  const [selectId, setSelectId] = useState('');
 
   return (
     <Spinner className='h-full relative' loading={isFetching}>
@@ -22,10 +27,17 @@ const TabStats = () => {
             </TableHead>
             <TableBody>
               {data?.results.map((item, index) => (
-                <TableRow key={index}>
+                <TableRow
+                  key={index}
+                  className='cursor-pointer'
+                  onClick={() => {
+                    setOpenInfo(true);
+                    setSelectId(item.session.id);
+                  }}
+                >
                   <TableCell>{item.session.zone}</TableCell>
-                  <TableCell align='right'>{item.totalBet}</TableCell>
-                  <TableCell align='right'>{item.totalWinnings}</TableCell>
+                  <TableCell align='right'>{formatBalance(item.totalBet)}</TableCell>
+                  <TableCell align='right'>{formatBalance(item.totalWinnings)}</TableCell>
                   <TableCell align='right'>{item.session.incId}</TableCell>
                 </TableRow>
               ))}
@@ -33,6 +45,10 @@ const TabStats = () => {
           </Table>
         </TableContainer>
       </PerfectScrollbar>
+
+      <Dialog open={openInfo} fullScreen>
+        <PopupStatInfo id={selectId} onClose={() => setOpenInfo(false)} />
+      </Dialog>
 
       <div className='absolute inset-0 top-[unset]'>
         <div className='w-full h-[40px] bg-secondary-gradient rounded-full'>

@@ -23,14 +23,37 @@ type WithdrawPaginateType = {
   totalWithdrawAmount: number;
 };
 
-type StatsType = {
+type StatType = {
   session: SessionType;
   totalBet: number;
   totalWinnings: number;
 };
 
+type BetType = {
+  id: string;
+  amount: number;
+  winnings: number;
+  game: string;
+  gate: string;
+};
+
+type StatInfo = {
+  id: string;
+  totalBet: number;
+  totalWinnings: number;
+  incId: number;
+  status: StatusSession;
+  result: string;
+  zone: ZoneType;
+  startTime: string;
+  endTime: string;
+  createdAt: string;
+  updatedAt: string;
+  bets: BetType[];
+};
+
 type StatsPagniateType = {
-  results: StatsType[];
+  results: StatType[];
   totalResults: number;
   totalWinnings: number;
 };

@@ -9,7 +9,7 @@ import { transactionService } from 'services';
 
 type PopupProps = PopupController & {
   item: {
-    zone: string;
+    zone: ZoneType;
     game: string;
     gate: string;
   };
