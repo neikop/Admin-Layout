@@ -36,6 +36,10 @@ body > iframe {
   display: none;
 }
 
+#chat-widget-minimized {
+  display: none !important;
+}
+
 @font-face {
   font-family: 'Lexend';
   src: url('/assets/fonts/Lexend-Black.ttf') format('truetype');
