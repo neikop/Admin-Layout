@@ -6,7 +6,7 @@ import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { profileSelector } from 'reducers/profileSlice';
 import { systemSelector } from 'reducers/systemSlice';
 import { authRoute, privateRoute } from 'routes';
-import { Socket } from 'socket';
+import { Socket } from 'utils/socket';
 import { PopupAlert } from 'views/Home/components';
 
 const PrivateLayout = () => {

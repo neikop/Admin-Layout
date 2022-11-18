@@ -3,6 +3,7 @@ import { Button, Dialog } from '@mui/material';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { profileSelector } from 'reducers/profileSlice';
+import { formatBalance } from 'utils/common';
 import { PopupBanking, PopupDeposit, PopupLogout, PopupWithdraw } from './components';
 
 const Member = () => {
@@ -24,7 +25,7 @@ const Member = () => {
           <div className='font-bold'>ID: {incId}</div>
           <div className='text-center mt-3'>
             <div>Số dư tài khoản</div>
-            <div className='font-bold text-[48px]'>{balance}</div>
+            <div className='font-bold text-[48px]'>{formatBalance(balance)}</div>
           </div>
         </div>
         <img src={require('assets/images/Cover-sticker.png')} className='absolute top-[-20px] right-[12px] w-[60px]' />
