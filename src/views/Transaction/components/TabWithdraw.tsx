@@ -3,6 +3,7 @@ import { Spinner } from 'components';
 import { DateTime } from 'luxon';
 import { useQuery } from 'react-query';
 import { transactionService } from 'services';
+import { formatBalance } from 'utils/common';
 
 const TabWithdraw = () => {
   const { data, isFetching } = useQuery(['transactionService.getWithdraw'], () => transactionService.getWithdraw());
@@ -49,7 +50,7 @@ const TabWithdraw = () => {
             </div>
             <div className='flex gap-1'>
               <span>Lợi nhuận:</span>
-              <span className='font-bold'>{data?.totalWithdrawAmount ?? 0}</span>
+              <span className='font-bold'>{formatBalance(data?.totalWithdrawAmount)}</span>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Spinner } from 'components';
 import { DateTime } from 'luxon';
 import { useQuery } from 'react-query';
 import { transactionService } from 'services';
+import { formatBalance } from 'utils/common';
 
 const TabDeposit = () => {
   const { data, isFetching } = useQuery(['transactionService.getDeposit'], () => transactionService.getDeposit());
@@ -47,7 +48,7 @@ const TabDeposit = () => {
             </div>
             <div className='flex gap-1'>
               <span>Lợi nhuận:</span>
-              <span className='font-bold'>{data?.totalDepositAmount ?? 0}</span>
+              <span className='font-bold'>{formatBalance(data?.totalDepositAmount)}</span>
             </div>
           </div>
         </div>

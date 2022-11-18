@@ -2,6 +2,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 import { PerfectScrollbar, Spinner } from 'components';
 import { useQuery } from 'react-query';
 import { sessionService } from 'services';
+import { formatBalance } from 'utils/common';
 
 const TabStats = () => {
   const { data, isFetching } = useQuery(['sessionService.getGeneralStats'], () => sessionService.getGeneralStats());
@@ -42,7 +43,7 @@ const TabStats = () => {
             </div>
             <div className='flex gap-1'>
               <span>Lợi nhuận:</span>
-              <span className='font-bold'>{data?.totalWinnings ?? 0}</span>
+              <span className='font-bold'>{formatBalance(data?.totalWinnings)}</span>
             </div>
           </div>
         </div>
