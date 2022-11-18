@@ -33,7 +33,7 @@ const PrivateLayout = () => {
 
   return (
     <main className='flex flex-col'>
-      <div style={{ height: `calc(100vh - 100px)` }}>
+      <div style={{ height: `calc(100vh - 100px)`, overflow: 'auto' }}>
         {isReady ? (
           <Routes>
             {Object.values(privateRoute).map(({ path, component: Element }) => (
