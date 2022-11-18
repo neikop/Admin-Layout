@@ -1,5 +1,8 @@
+import { LiveChatWidget } from '@livechat/widget-react';
 import { Avatar, ListItemButton } from '@mui/material';
 import { styled } from '@mui/system';
+import { LIVE_CHAT_LICENSE } from 'env';
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { privateRoute } from 'routes';
 
@@ -30,7 +33,9 @@ const NavItem = ({ path, name, icon }: { path: string; name: string; icon?: any 
 };
 
 const Menu = () => {
-  const { trend, chat, member, transaction } = privateRoute;
+  const { trend, member, transaction } = privateRoute;
+
+  const [visible, setVisible] = useState<'maximized' | 'minimized' | 'hidden'>('minimized');
 
   return (
     <div className='flex'>
@@ -45,7 +50,22 @@ const Menu = () => {
         </Avatar>
       </Link>
       <NavItem {...member} icon={<img src={require('assets/icons/User.png')} />} />
-      <NavItem {...chat} icon={<img src={require('assets/icons/Chat.png')} />} />
+
+      <StyledListItem disabled={!LIVE_CHAT_LICENSE} onClick={() => setVisible('maximized')}>
+        <span className='w-[24px]'>
+          <img src={require('assets/icons/Chat.png')} />
+        </span>
+        <span className='whitespace-nowrap'>Chat</span>
+      </StyledListItem>
+      {LIVE_CHAT_LICENSE ? (
+        <LiveChatWidget
+          license={LIVE_CHAT_LICENSE}
+          visibility={visible}
+          onVisibilityChanged={({ visibility }) => setVisible(visibility)}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import { Chat } from 'views/Chat';
 import { Home } from 'views/Home';
 import { Member } from 'views/Member';
 import { Transaction } from 'views/Transaction';
@@ -24,11 +23,6 @@ const privateRoute = {
     path: '/giao-dich',
     name: 'Giao dịch',
     component: Transaction,
-  },
-  chat: {
-    path: '/chat',
-    name: 'Chat',
-    component: Chat,
   },
 };
 

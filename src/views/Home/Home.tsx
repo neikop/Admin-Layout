@@ -1,12 +1,12 @@
 import { AccessTimeOutlined, InfoOutlined } from '@mui/icons-material';
-import { Avatar, Button, ButtonGroup, Dialog, Grid, Tab, Tabs } from '@mui/material';
+import { Avatar, Button, ButtonGroup, Dialog, Grid, IconButton, Tab, Tabs, Tooltip } from '@mui/material';
 import { AppLogo, PerfectScrollbar } from 'components';
 import { useTabs } from 'hooks';
 import { useMemo, useState } from 'react';
 import { default as Countdown } from 'react-countdown';
 import { useSelector } from 'react-redux';
 import { systemSelector } from 'reducers/systemSlice';
-import { PopupBet } from './components';
+import { PopupBet, PopupInfo } from './components';
 import { ONE_TO_FIVE, TONG_HOA } from './components/games';
 
 const TABS = [
@@ -41,6 +41,7 @@ const Home = () => {
     [currentSessions, lastSessions, activeZone],
   );
 
+  const [openInfo, setOpenInfo] = useState(false);
   const [openBet, setOpenBet] = useState(false);
   const isOneToFive = activeGame === 'ONE_TO_FIVE';
 
@@ -53,7 +54,11 @@ const Home = () => {
           <span className='bg-primary-gradient font-bold px-2 py-0.5 mx-1 rounded-full'>{lastSession.incId}</span>
           hôm nay
         </div>
-        <InfoOutlined color='primary' />
+        <Tooltip title='Quy định'>
+          <IconButton size='small' onClick={() => setOpenInfo(true)}>
+            <InfoOutlined color='primary' />
+          </IconButton>
+        </Tooltip>
       </div>
 
       <div className='flex justify-center gap-3 my-3'>
@@ -179,6 +184,9 @@ const Home = () => {
         </PerfectScrollbar>
       </div>
 
+      <Dialog open={openInfo} fullScreen>
+        <PopupInfo onClose={() => setOpenInfo(false)} />
+      </Dialog>
       <Dialog open={openBet} onClose={() => setOpenBet(false)}>
         <PopupBet
           onClose={() => setOpenBet(false)}

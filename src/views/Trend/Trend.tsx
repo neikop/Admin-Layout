@@ -52,11 +52,11 @@ const Trend = () => {
               <Grid container className='text-center'>
                 {data?.results.map((item) => (
                   <React.Fragment key={item.id}>
-                    <Grid xs={3} className='font-medium border border-t-[0px] flex justify-center items-center'>
+                    <Grid item xs={3} className='font-medium border border-t-[0px] flex justify-center items-center'>
                       {item.incId}
                     </Grid>
                     {item.result.split('').map((number, index) => (
-                      <Grid xs={9 / 5} key={index} className='border border-t-[0px] border-l-[0px] p-[6px]'>
+                      <Grid item xs={9 / 5} key={index} className='border border-t-[0px] border-l-[0px] p-[6px]'>
                         <Avatar className='bg-secondary-gradient font-medium w-[36px] h-[36px] mx-auto'>
                           {number}
                         </Avatar>
