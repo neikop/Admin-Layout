@@ -124,9 +124,10 @@ const Home = () => {
               <ButtonGroup variant='text'>
                 {GATES.map((item, index) => (
                   <Button
-                    variant={activeGate === item.code ? 'contained' : 'outlined'}
-                    style={{ borderLeftWidth: index ? 0 : 1 }}
                     key={index}
+                    variant='outlined'
+                    className={activeGate === item.code ? 'bg-primary-gradient' : 'bg-white'}
+                    style={{ borderLeftWidth: index ? 0 : 1 }}
                     onClick={() => setActiveGate(item.code)}
                   >
                     {item.label}
