@@ -21,7 +21,7 @@ const GAMES = [
 ];
 
 const GATES = [
-  { code: 'CHUC_NGAN_', label: 'Vạn' },
+  { code: 'CHUC_NGAN_', label: 'C.Ngàn' },
   { code: 'NGAN_', label: 'Ngàn' },
   { code: 'TRAM_', label: 'Trăm' },
   { code: 'CHUC_', label: 'Chục' },
@@ -46,7 +46,7 @@ const Home = () => {
   const isOneToFive = activeGame === 'ONE_TO_FIVE';
 
   return (
-    <div className='h-full flex flex-col'>
+    <div>
       <div className='min-h-[60px] flex justify-between items-center px-3'>
         <AppLogo size={32} />
         <div>
@@ -87,7 +87,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className='flex-1 bg-white/80 rounded-t-[24px] p-[12px]'>
+      <div className='bg-white/80 rounded-t-[24px] p-[12px]'>
         <Tabs
           value={activeZone}
           onChange={onTabChange}
@@ -121,10 +121,14 @@ const Home = () => {
         {isOneToFive && (
           <>
             <div className='flex justify-center mb-2'>
-              <ButtonGroup>
+              <ButtonGroup variant='text'>
                 {GATES.map((item, index) => (
                   <Button
                     variant={activeGate === item.code ? 'contained' : 'outlined'}
+                    style={{
+                      borderLeftWidth: index ? 0 : 1,
+                      borderRightWidth: index === 4 ? 0 : 1,
+                    }}
                     key={index}
                     onClick={() => setActiveGate(item.code)}
                   >

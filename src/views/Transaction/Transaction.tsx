@@ -11,11 +11,11 @@ const Transaction = () => {
   const [activeTab, onTabChange] = useTabs(tabs);
 
   return (
-    <div className='h-full flex flex-col'>
+    <div>
       <div className='h-[60px] flex justify-center items-center'>
         <span className='font-bold text-xl'>Giao dịch</span>
       </div>
-      <div className='flex-1 flex flex-col bg-white/80 rounded-t-[24px] p-[12px]'>
+      <div className='bg-white/80 rounded-t-[24px] p-[12px]'>
         <Tabs
           value={activeTab}
           onChange={onTabChange}
@@ -32,7 +32,7 @@ const Transaction = () => {
         </Tabs>
 
         {tabs.map((tab) => (
-          <div key={tab.code} hidden={tab.code !== activeTab} className='flex-1 mt-[12px]'>
+          <div key={tab.code} hidden={tab.code !== activeTab} className='mt-[12px]'>
             {tab.component}
           </div>
         ))}

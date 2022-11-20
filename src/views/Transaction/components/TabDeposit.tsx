@@ -7,9 +7,10 @@ import { formatBalance } from 'utils/common';
 
 const TabDeposit = () => {
   const { data, isFetching } = useQuery(['transactionService.getDeposit'], () => transactionService.getDeposit());
+  const isLong = Number(data?.deposits.length) > 10;
 
   return (
-    <Spinner className='h-full relative' loading={isFetching}>
+    <Spinner loading={isFetching}>
       <TableContainer>
         <Table>
           <TableHead>
@@ -39,8 +40,15 @@ const TabDeposit = () => {
         </Table>
       </TableContainer>
 
-      <div className='absolute inset-0 top-[unset]'>
-        <div className='w-full h-[40px] bg-success-gradient rounded-full'>
+      <div
+        className='bottom-[100px] left-0 right-0 pt-2'
+        style={{
+          backgroundColor: '#F5F5F5',
+          position: isLong ? 'fixed' : 'relative',
+          padding: isLong ? 8 : 0,
+        }}
+      >
+        <div className='h-[40px] bg-success-gradient rounded-full'>
           <div className='h-full flex justify-between items-center px-[16px]'>
             <div className='flex gap-1'>
               <span>Tổng số đơn:</span>

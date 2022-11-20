@@ -1,7 +1,7 @@
 import { Avatar, Grid, Tab, Tabs } from '@mui/material';
-import { PerfectScrollbar, Spinner } from 'components';
+import { Spinner } from 'components';
 import { useTabs } from 'hooks';
-import React from 'react';
+import { Fragment } from 'react';
 import { useQuery } from 'react-query';
 import { sessionService } from 'services';
 
@@ -20,11 +20,11 @@ const Trend = () => {
   );
 
   return (
-    <div className='h-full flex flex-col'>
+    <div>
       <div className='h-[60px] flex justify-center items-center'>
         <span className='font-bold text-xl'>Xu hướng kỷ lục</span>
       </div>
-      <div className='flex-1 bg-white/80 rounded-t-[24px] p-[12px]'>
+      <div className='bg-white/80 rounded-t-[24px] p-[12px]'>
         <Tabs
           value={activeTab}
           onChange={onTabChange}
@@ -48,24 +48,20 @@ const Trend = () => {
             Kết quả
           </Grid>
           <Spinner loading={isFetching}>
-            <PerfectScrollbar style={{ maxHeight: `calc(100vh - 300px)` }}>
-              <Grid container className='text-center'>
-                {data?.results.map((item) => (
-                  <React.Fragment key={item.id}>
-                    <Grid item xs={3} className='font-medium border border-t-[0px] flex justify-center items-center'>
-                      {item.incId}
+            <Grid container className='text-center'>
+              {data?.results.map((item) => (
+                <Fragment key={item.id}>
+                  <Grid item xs={3} className='font-medium border border-t-[0px] flex justify-center items-center'>
+                    {item.incId}
+                  </Grid>
+                  {item.result.split('').map((number, index) => (
+                    <Grid item xs={9 / 5} key={index} className='border border-t-[0px] border-l-[0px] p-[6px]'>
+                      <Avatar className='bg-secondary-gradient font-medium w-[36px] h-[36px] mx-auto'>{number}</Avatar>
                     </Grid>
-                    {item.result.split('').map((number, index) => (
-                      <Grid item xs={9 / 5} key={index} className='border border-t-[0px] border-l-[0px] p-[6px]'>
-                        <Avatar className='bg-secondary-gradient font-medium w-[36px] h-[36px] mx-auto'>
-                          {number}
-                        </Avatar>
-                      </Grid>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </Grid>
-            </PerfectScrollbar>
+                  ))}
+                </Fragment>
+              ))}
+            </Grid>
           </Spinner>
         </Grid>
       </div>

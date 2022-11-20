@@ -54,7 +54,9 @@
 
 .MuiButton-root.MuiButton-text,
 .MuiButton-root.MuiButton-contained {
-  border-radius: 12px;
+  &:not(.MuiButtonGroup-grouped) {
+    border-radius: 12px;
+  }
   &:hover {
     filter: brightness(0.9);
   }

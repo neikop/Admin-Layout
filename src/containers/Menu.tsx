@@ -51,7 +51,7 @@ const Menu = () => {
       </Link>
       <NavItem {...member} icon={<img src={require('assets/icons/User.png')} />} />
 
-      <StyledListItem disabled={!LIVE_CHAT_LICENSE} onClick={() => setVisible('maximized')}>
+      <StyledListItem className='flex-1' disabled={!LIVE_CHAT_LICENSE} onClick={() => setVisible('maximized')}>
         <span className='w-[24px]'>
           <img src={require('assets/icons/Chat.png')} />
         </span>

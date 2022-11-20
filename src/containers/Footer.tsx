@@ -11,7 +11,13 @@ const Footer = () => {
   const [showBalance, setShowBalance] = useState(false);
 
   return (
-    <AppBar component='footer' position='relative' color='transparent' elevation={0} className='pt-[40px]'>
+    <AppBar
+      component='footer'
+      color='transparent'
+      elevation={0}
+      className='pt-[40px] bottom-0 top-[unset] rounded-t-[20px]'
+      style={{ background: `url(${require('assets/images/App-background.png')}) no-repeat bottom / cover` }}
+    >
       <div className='w-full h-[40px] absolute top-[0px] bg-[#1E2843] rounded-full'>
         <div className='flex justify-between items-center px-[16px] font-bold text-white'>
           <div>Số dư tài khoản ID: {incId}</div>

@@ -13,7 +13,7 @@ const Member = () => {
   const [openWithdraw, setOpenWithdraw] = useState(false);
 
   return (
-    <div className='h-full flex flex-col'>
+    <div>
       <div className='h-[60px] flex justify-center items-center'>
         <span className='font-bold text-xl'>Tài khoản</span>
       </div>
@@ -54,7 +54,7 @@ const Member = () => {
         <PopupBanking />
       </div>
 
-      <div className='flex-1 flex flex-col justify-end items-center pb-10'>
+      <div className='flex justify-center mx-6 my-10'>
         <Button onClick={() => setOpenLogout(true)}>Đăng xuất</Button>
       </div>
 
