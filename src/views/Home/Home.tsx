@@ -61,7 +61,7 @@ const Home = () => {
         </Tooltip>
       </div>
 
-      <div className='flex justify-center gap-3 my-3'>
+      <div className='flex justify-center space-x-3 my-3'>
         {lastSession.result.split('').map((number, index) => (
           <Avatar key={index} className='bg-secondary-gradient font-bold'>
             {number}
@@ -73,7 +73,7 @@ const Home = () => {
         <div>
           Kỳ tiếp theo: <span className='font-medium'>{currentSession.incId}</span>
         </div>
-        <div className='flex items-center gap-1'>
+        <div className='flex items-center space-x-1'>
           <AccessTimeOutlined color='action' />
           <Countdown
             overtime
@@ -103,7 +103,7 @@ const Home = () => {
           ))}
         </Tabs>
 
-        <div className='flex justify-center gap-2 my-3'>
+        <div className='flex justify-center space-x-2 my-3'>
           {GAMES.map((item, index) => (
             <Button
               key={index}

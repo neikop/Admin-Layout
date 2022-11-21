@@ -35,7 +35,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className='flex-1 flex flex-col gap-[40px] bg-white/80 rounded-t-[24px] px-[24px] py-[36px]'>
+    <div className='flex-1 flex flex-col space-y-10 bg-white/80 rounded-t-[24px] px-[24px] py-[36px]'>
       <Controller
         name='username'
         defaultValue=''
@@ -77,14 +77,14 @@ const LoginScreen = () => {
         Đăng nhập
       </LoadingButton>
 
-      <div className='flex justify-center gap-2 mt-[-20px]'>
+      <div className='flex justify-center space-x-2 mt-[-20px]'>
         <span>Bạn chưa có tài khoản?</span>
         <Link className='font-bold hover:text-primary-main' to={authRoute.register.url}>
           Đăng ký ngay
         </Link>
       </div>
 
-      <div className='flex flex-wrap justify-center mt-[20px] gap-[12px] sm:gap-[20px]'>
+      <div className='flex flex-wrap justify-center mt-[20px] space-x-3 sm:space-x-5'>
         <img src={require('assets/icons/Techcombank-logo.png')} className='h-[40px] sm:h-[60px]' />
         <img src={require('assets/icons/BIDV-logo.png')} className='h-[40px] sm:h-[60px]' />
         <img src={require('assets/icons/Vingroup-logo.png')} className='h-[40px] sm:h-[60px]' />

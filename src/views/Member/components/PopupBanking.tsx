@@ -95,7 +95,7 @@ const PopupBanking = () => {
           <div className='text-neutral'>* Quý khách vui lòng điền đúng thông tin</div>
         </DialogContent>
         <DialogActions>
-          <div className='flex flex-col gap-1'>
+          <div className='flex flex-col space-y-1'>
             <LoadingButton fullWidth variant='contained' loading={isLoading} onClick={handleClickSubmit}>
               Xác nhận
             </LoadingButton>

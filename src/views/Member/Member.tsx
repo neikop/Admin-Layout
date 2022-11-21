@@ -29,7 +29,7 @@ const Member = () => {
         <img src={require('assets/images/Cover-sticker.png')} className='absolute top-[-20px] right-[12px] w-[60px]' />
       </div>
 
-      <div className='h-[80px] flex items-stretch gap-6 mx-6 my-6'>
+      <div className='h-[80px] flex items-stretch space-x-6 mx-6 my-6'>
         <Button
           fullWidth
           variant='contained'

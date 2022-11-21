@@ -59,11 +59,11 @@ const TabStats = () => {
       >
         <div className='w-full h-[40px] bg-secondary-gradient rounded-full'>
           <div className='h-full flex justify-between items-center px-[16px]'>
-            <div className='flex gap-1'>
+            <div className='flex space-x-1'>
               <span>Tổng số đơn:</span>
               <span className='font-bold'>{data?.totalResults ?? 0}</span>
             </div>
-            <div className='flex gap-1'>
+            <div className='flex space-x-1'>
               <span>Lợi nhuận:</span>
               <span className='font-bold'>{formatBalance(data?.totalWinnings)}</span>
             </div>

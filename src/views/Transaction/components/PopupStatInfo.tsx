@@ -32,7 +32,7 @@ const PopupStatInfo = ({ onClose, id }: PopupProps) => {
       <CloseButton onClick={onClose} />
       <DialogTitle>Chi tiết kỳ</DialogTitle>
       <DialogContent className='flex flex-col p-0'>
-        <div className='flex-1 flex flex-col items-stretch gap-4 bg-white/80 rounded-t-[24px] p-[12px]'>
+        <div className='flex-1 flex flex-col items-stretch space-y-4 bg-white/80 rounded-t-[24px] p-[12px]'>
           <div className='flex justify-center'>
             <span className='bg-primary-gradient rounded-full text-[24px] font-medium px-4 py-1'>{stat.incId}</span>
           </div>
@@ -50,7 +50,7 @@ const PopupStatInfo = ({ onClose, id }: PopupProps) => {
           </div>
           <div className='flex justify-between'>
             <div>Kết quả mở thưởng</div>
-            <div className='inline-flex gap-1'>
+            <div className='inline-flex space-x-1'>
               {stat.result.split('').map((number, index) => (
                 <Avatar key={index} className='bg-secondary-gradient text-sm w-[24px] h-[24px]'>
                   {number}

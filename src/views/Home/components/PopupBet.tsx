@@ -38,7 +38,7 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
     <>
       <DialogTitle>Đặt cược</DialogTitle>
       <DialogContent>
-        <div className='flex gap-2'>
+        <div className='flex space-x-2'>
           <Button onClick={() => setValue('amount', Math.max(10, amount - 10))}>
             <Remove fontSize='large' />
           </Button>
@@ -84,7 +84,7 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
         </Grid>
       </DialogContent>
       <DialogActions>
-        <div className='flex flex-col gap-1'>
+        <div className='flex flex-col space-y-1'>
           <LoadingButton fullWidth variant='contained' loading={isLoading} onClick={handleClickSubmit}>
             Xác nhận
           </LoadingButton>

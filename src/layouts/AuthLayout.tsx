@@ -18,7 +18,7 @@ const AuthLayout = () => {
 
   return (
     <main className='flex flex-col'>
-      <div className='h-[120px] flex justify-center items-center gap-2'>
+      <div className='h-[120px] flex justify-center items-center space-x-2'>
         <AppLogo />
         <span className='font-[Lemonada] text-[32px]'>{WEB_TITLE}</span>
       </div>

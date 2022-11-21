@@ -51,21 +51,17 @@ const Menu = () => {
       </Link>
       <NavItem {...member} icon={<img src={require('assets/icons/User.png')} />} />
 
-      <StyledListItem className='flex-1' disabled={!LIVE_CHAT_LICENSE} onClick={() => setVisible('maximized')}>
+      <StyledListItem className='flex-1' onClick={() => setVisible('maximized')}>
         <span className='w-[24px]'>
           <img src={require('assets/icons/Chat.png')} />
         </span>
         <span className='whitespace-nowrap'>Chat</span>
       </StyledListItem>
-      {LIVE_CHAT_LICENSE ? (
-        <LiveChatWidget
-          license={LIVE_CHAT_LICENSE}
-          visibility={visible}
-          onVisibilityChanged={({ visibility }) => setVisible(visibility)}
-        />
-      ) : (
-        <></>
-      )}
+      <LiveChatWidget
+        license={LIVE_CHAT_LICENSE}
+        visibility={visible}
+        onVisibilityChanged={({ visibility }) => setVisible(visibility)}
+      />
     </div>
   );
 };

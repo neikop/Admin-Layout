@@ -30,7 +30,7 @@ const RegisterScreen = () => {
   };
 
   return (
-    <div className='flex-1 flex flex-col gap-[40px] bg-white/0 rounded-t-[24px] px-[24px] py-[36px]'>
+    <div className='flex-1 flex flex-col space-y-10 bg-white/0 rounded-t-[24px] px-[24px] py-[36px]'>
       <Controller
         name='username'
         defaultValue=''

@@ -14,7 +14,7 @@ const PopupLogout = ({ onClose }: PopupProps) => {
         <div className='text-center text-neutral'>Bạn có chắc chắn đăng xuất tài khoản?</div>
       </DialogContent>
       <DialogActions>
-        <div className='flex flex-col gap-1'>
+        <div className='flex flex-col space-y-1'>
           <Button variant='contained' className='w-[160px]' onClick={() => dispatch(signOut({}))}>
             Đăng xuất
           </Button>

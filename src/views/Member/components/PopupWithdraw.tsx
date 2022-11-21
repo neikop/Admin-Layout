@@ -81,7 +81,7 @@ const PopupWithdraw = ({ onClose }: PopupProps) => {
         </div>
       </DialogContent>
       <DialogActions>
-        <div className='flex flex-col gap-1'>
+        <div className='flex flex-col space-y-1'>
           <LoadingButton fullWidth variant='contained' loading={isLoading} onClick={handleClickSubmit}>
             Gửi yêu cầu
           </LoadingButton>
