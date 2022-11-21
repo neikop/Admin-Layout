@@ -15,7 +15,7 @@ const Footer = () => {
       component='footer'
       color='transparent'
       elevation={0}
-      className='pt-[40px] inset-0 top-[unset] rounded-t-[20px] max-w-[600px]'
+      className='pt-[40px] inset-0 top-[unset] rounded-t-[20px] max-w-[600px] mx-auto'
       style={{ background: `url(${require('assets/images/App-background.png')}) no-repeat bottom / cover` }}
     >
       <div className='w-full h-[40px] absolute top-[0px] bg-[#1E2843] rounded-full'>
