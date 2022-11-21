@@ -67,7 +67,7 @@ const Menu = () => {
         onVisibilityChanged={({ visibility }) => setVisible(visibility)}
         onNewEvent={() => {}}
         onReady={() => {
-          setVisible('hidden');
+          setVisible('minimized');
         }}
       />
     </div>
