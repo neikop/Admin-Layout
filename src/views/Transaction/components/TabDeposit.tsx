@@ -44,7 +44,7 @@ const TabDeposit = () => {
         className='bottom-[100px] left-0 right-0 pt-2'
         style={{
           backgroundColor: '#F5F5F5',
-          position: isLong ? 'fixed' : 'relative',
+          position: isLong ? 'fixed' : 'static',
           padding: isLong ? 8 : 0,
         }}
       >
