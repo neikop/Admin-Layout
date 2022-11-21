@@ -50,7 +50,7 @@ const TabStats = () => {
       </Dialog>
 
       <div
-        className='bottom-[100px] left-0 right-0 pt-2'
+        className='pt-[8px] inset-0 top-[unset] bottom-[100px] max-w-[600px] mx-auto'
         style={{
           backgroundColor: '#F5F5F5',
           position: isLong ? 'fixed' : 'static',
