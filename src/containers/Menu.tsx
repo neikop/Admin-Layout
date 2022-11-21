@@ -3,7 +3,9 @@ import { Avatar, ListItemButton } from '@mui/material';
 import { styled } from '@mui/system';
 import { LIVE_CHAT_LICENSE } from 'env';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
+import { profileSelector } from 'reducers/profileSlice';
 import { privateRoute } from 'routes';
 
 const StyledListItem = styled(ListItemButton)({
@@ -34,6 +36,7 @@ const NavItem = ({ path, name, icon }: { path: string; name: string; icon?: any 
 
 const Menu = () => {
   const { trend, member, transaction } = privateRoute;
+  const { username } = useSelector(profileSelector);
 
   const [visible, setVisible] = useState<'maximized' | 'minimized' | 'hidden'>('minimized');
 
@@ -60,7 +63,12 @@ const Menu = () => {
       <LiveChatWidget
         license={LIVE_CHAT_LICENSE}
         visibility={visible}
+        customerName={username}
         onVisibilityChanged={({ visibility }) => setVisible(visibility)}
+        onNewEvent={() => {}}
+        onReady={() => {
+          setVisible('hidden');
+        }}
       />
     </div>
   );
