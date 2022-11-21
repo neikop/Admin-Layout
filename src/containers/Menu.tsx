@@ -38,7 +38,7 @@ const Menu = () => {
   const { trend, member, transaction } = privateRoute;
   const { username } = useSelector(profileSelector);
 
-  const [visible, setVisible] = useState<'maximized' | 'minimized' | 'hidden'>('minimized');
+  const [visible, setVisible] = useState<'maximized' | 'minimized' | 'hidden'>('hidden');
 
   return (
     <div className='flex'>
@@ -65,10 +65,6 @@ const Menu = () => {
         visibility={visible}
         customerName={username}
         onVisibilityChanged={({ visibility }) => setVisible(visibility)}
-        onNewEvent={() => {}}
-        onReady={() => {
-          setVisible('minimized');
-        }}
       />
     </div>
   );
