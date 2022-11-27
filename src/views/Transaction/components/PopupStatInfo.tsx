@@ -84,7 +84,7 @@ const PopupStatInfo = ({ onClose, id }: PopupProps) => {
               <TableBody>
                 {stat.bets.map((item) => (
                   <TableRow key={item.id}>
-                    <TableCell>{item.game}</TableCell>
+                    <TableCell>{item.gate}</TableCell>
                     <TableCell align='right'>{formatBalance(item.amount)}</TableCell>
                     <TableCell align='right'>{formatBalance(item.winnings)}</TableCell>
                   </TableRow>
