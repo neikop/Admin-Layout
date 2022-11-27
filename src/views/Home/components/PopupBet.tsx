@@ -3,6 +3,7 @@ import { LoadingButton } from '@mui/lab';
 import { Button, DialogActions, DialogContent, DialogTitle, Grid, TextField } from '@mui/material';
 import { InputNumber } from 'components';
 import { useSnackbar } from 'notistack';
+import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { useMutation } from 'react-query';
 import { transactionService } from 'services';
@@ -34,6 +35,10 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
     })();
   };
 
+  useEffect(() => {
+    setValue('amount', 100);
+  }, [setValue]);
+
   return (
     <>
       <DialogTitle>Đặt cược</DialogTitle>
@@ -45,7 +50,7 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
           <Controller
             control={control}
             name='amount'
-            defaultValue={amount}
+            defaultValue=''
             rules={{
               required: 'Số tiền đặt không được để trống',
               min: { value: 9, message: 'Số tiền rút tối thiểu là 10' },
