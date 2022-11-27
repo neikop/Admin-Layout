@@ -8,7 +8,7 @@ import { formatBalance } from 'utils/common';
 
 const Footer = () => {
   const { incId, balance } = useSelector(profileSelector);
-  const [showBalance, setShowBalance] = useState(false);
+  const [showBalance, setShowBalance] = useState(true);
 
   return (
     <AppBar

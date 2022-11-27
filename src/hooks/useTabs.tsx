@@ -12,7 +12,7 @@ const useTabs = (tabs: TabType[]) => {
   const location = useLocation();
   const { tab, ...others } = parse(location.search, { ignoreQueryPrefix: true });
 
-  const [activeTab, setActiveTab] = useState((tabs.find((item) => item.code === tab) ?? tabs[0]).code);
+  const [activeTab, setActiveTab] = useState((tabs.find((item) => item.code === tab) ?? tabs[1]).code);
 
   const handleChangeTab = useCallback(
     (event: React.SyntheticEvent, value: any) => {
