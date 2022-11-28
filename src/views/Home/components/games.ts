@@ -38,8 +38,8 @@ export const TONG_HOA = [
 export const ONE_TO_FIVE = [
   { gate: 'DUOI', label: 'Trên', cross: 1.99, colspan: 2 },
   { gate: 'TREN', label: 'Dưới', cross: 1.99, colspan: 2 },
-  { gate: 'CHAN', label: 'Đôi', cross: 1.99, colspan: 2 },
-  { gate: 'LE', label: 'Đơn', cross: 1.99, colspan: 2 },
+  { gate: 'DOI', label: 'Đôi', cross: 1.99, colspan: 2 },
+  { gate: 'DON', label: 'Đơn', cross: 1.99, colspan: 2 },
 
   { gate: '0', label: '0', cross: 9.99, colspan: 1 },
   { gate: '1', label: '1', cross: 9.99, colspan: 1 },
