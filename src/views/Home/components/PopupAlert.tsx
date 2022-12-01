@@ -4,9 +4,9 @@ type PopupProps = PopupController & {
   message: string;
 };
 
-const PopupDeposit = ({ onClose, message }: PopupProps) => {
+const PopupAlert = ({ onClose, message }: PopupProps) => {
   return (
-    <>
+    <div style={{ background: `url(${require('assets/images/Moneydrop.png')}) no-repeat top / cover` }}>
       <DialogTitle>Thông báo</DialogTitle>
       <DialogContent>
         <div className='text-center text-neutral'>{message}</div>
@@ -16,8 +16,8 @@ const PopupDeposit = ({ onClose, message }: PopupProps) => {
           Đồng ý
         </Button>
       </DialogActions>
-    </>
+    </div>
   );
 };
 
-export default PopupDeposit;
+export default PopupAlert;
