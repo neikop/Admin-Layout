@@ -28,6 +28,12 @@ const LoginScreen = () => {
     },
   });
 
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === 'Enter') {
+      handleClickSubmit();
+    }
+  };
+
   const handleClickSubmit = () => {
     handleSubmit((values) => {
       login(values);
@@ -67,6 +73,7 @@ const LoginScreen = () => {
             fullWidth
             variant='standard'
             label='Mật khẩu'
+            onKeyDown={handleKeyDown}
             error={!!error}
             helperText={error?.message}
           />
