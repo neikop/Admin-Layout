@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { profileSelector } from 'reducers/profileSlice';
 import { formatBalance } from 'utils/common';
-import { PopupBanking, PopupDeposit, PopupLogout, PopupWithdraw } from './components';
+import { PopupBanking, PopupDeposit, PopupLogout, PopupPassword, PopupWithdraw } from './components';
 
 const Member = () => {
   const { incId, balance } = useSelector(profileSelector);
@@ -11,6 +11,7 @@ const Member = () => {
   const [openLogout, setOpenLogout] = useState(false);
   const [openDeposit, setOpenDeposit] = useState(false);
   const [openWithdraw, setOpenWithdraw] = useState(false);
+  const [openPassword, setOpenPassword] = useState(false);
 
   return (
     <div>
@@ -25,6 +26,11 @@ const Member = () => {
             <div>Số dư tài khoản</div>
             <div className='font-bold text-[48px]'>{formatBalance(balance)}</div>
           </div>
+        </div>
+        <div className='text-right mt-6 mx-3'>
+          <Button color='inherit' onClick={() => setOpenPassword(true)}>
+            Đổi mật khẩu
+          </Button>
         </div>
         <img src={require('assets/images/Cover-sticker.png')} className='absolute top-[-20px] right-[12px] w-[60px]' />
       </div>
@@ -66,6 +72,9 @@ const Member = () => {
       </Dialog>
       <Dialog open={openWithdraw} fullScreen>
         <PopupWithdraw onClose={() => setOpenWithdraw(false)} />
+      </Dialog>
+      <Dialog open={openPassword} fullScreen>
+        <PopupPassword onClose={() => setOpenPassword(false)} />
       </Dialog>
     </div>
   );
