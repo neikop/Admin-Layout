@@ -36,7 +36,7 @@ const NavItem = ({ path, name, icon }: { path: string; name: string; icon?: any 
 
 const Menu = () => {
   const { trend, member, transaction } = privateRoute;
-  const { username } = useSelector(profileSelector);
+  const { incId } = useSelector(profileSelector);
 
   const [visible, setVisible] = useState<'maximized' | 'minimized' | 'hidden'>('hidden');
 
@@ -63,7 +63,7 @@ const Menu = () => {
       <LiveChatWidget
         license={LIVE_CHAT_LICENSE}
         visibility={visible}
-        customerName={username}
+        customerName={'ID: ' + incId}
         onVisibilityChanged={({ visibility }) => setVisible(visibility)}
       />
     </div>
