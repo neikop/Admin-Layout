@@ -98,10 +98,10 @@
 }
 
 .MuiInputBase-root.MuiOutlinedInput-root {
+  background-color: #fffb;
+  border-radius: 100px;
   > .MuiOutlinedInput-input {
     padding: 12px 16px;
-    background-color: #fffb;
-    border-radius: 100px;
   }
   > .MuiOutlinedInput-notchedOutline {
     border-radius: 100px;
