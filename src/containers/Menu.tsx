@@ -63,7 +63,7 @@ const Menu = () => {
       <LiveChatWidget
         license={LIVE_CHAT_LICENSE}
         visibility={visible}
-        customerName={'ID: ' + incId}
+        customerName={incId+''}
         onVisibilityChanged={({ visibility }) => setVisible(visibility)}
       />
     </div>
