@@ -2,13 +2,24 @@ import { VisibilityOffOutlined, VisibilityOutlined } from '@mui/icons-material';
 import { AppBar, IconButton } from '@mui/material';
 import { AppMenu } from 'containers';
 import { useState } from 'react';
+import { useQuery } from 'react-query';
 import { useSelector } from 'react-redux';
 import { profileSelector } from 'reducers/profileSlice';
+import { authService } from 'services';
 import { formatBalance } from 'utils/common';
 
 const Footer = () => {
-  const { incId, balance } = useSelector(profileSelector);
+  const { incId, ...profile } = useSelector(profileSelector);
   const [showBalance, setShowBalance] = useState(true);
+
+  const { data: balance, refetch } = useQuery(
+    ['profile.balance'],
+    () => authService.getProfile().then((profile) => profile.balance),
+    {
+      initialData: profile.balance,
+      refetchInterval: 30 * 1000,
+    },
+  );
 
   return (
     <AppBar
@@ -29,7 +40,13 @@ const Footer = () => {
                   <span key={index}>{showBalance ? number : '*'}</span>
                 ))}
             </div>
-            <IconButton className='text-white/80' onClick={() => setShowBalance((prev) => !prev)}>
+            <IconButton
+              className='text-white/80'
+              onClick={() => {
+                refetch();
+                setShowBalance((prev) => !prev);
+              }}
+            >
               {showBalance ? <VisibilityOffOutlined /> : <VisibilityOutlined />}
             </IconButton>
           </div>
