@@ -18,6 +18,7 @@ module.exports = {
         error: '#FF4E71',
         info: '#2996C5',
         neutral: '#465A7A',
+        line: '#ECE8F3',
       },
     },
   },

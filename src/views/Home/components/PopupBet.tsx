@@ -1,4 +1,3 @@
-import { Add, Remove } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Button, DialogActions, DialogContent, DialogTitle, Grid, TextField } from '@mui/material';
 import { InputNumber } from 'components';
@@ -41,11 +40,11 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
 
   return (
     <>
-      <DialogTitle>Đặt lệnh</DialogTitle>
+      <DialogTitle>Số tiền đặt</DialogTitle>
       <DialogContent>
-        <div className='flex space-x-2'>
-          <Button onClick={() => setValue('amount', Math.max(10, amount - 10))}>
-            <Remove fontSize='large' />
+        <div className='flex items-center space-x-2'>
+          <Button size='medium' onClick={() => setValue('amount', Math.max(10, amount - 10))}>
+            <img src={require('assets/icons/Minus.svg').default} className='scale-125' />
           </Button>
           <Controller
             control={control}
@@ -62,30 +61,44 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
                 InputProps={{
                   inputComponent: InputNumber,
                   inputProps: { maxLength: 12 },
+                  style: { fontSize: 16, fontWeight: 500 },
                 }}
                 sx={{
                   '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: '#ECE8F3',
+                    borderWidth: '1px !important',
                     borderRadius: '4px !important',
-                    boxShadow: '#0003 0px 4px 8px',
+                    boxShadow: '#0002 0px 4px 8px',
                   },
                 }}
                 error={!!error}
               />
             )}
           />
-          <Button onClick={() => setValue('amount', amount + 10)}>
-            <Add fontSize='large' />
+          <Button size='medium' onClick={() => setValue('amount', amount + 10)}>
+            <img src={require('assets/icons/Add.svg').default} className='scale-125' />
           </Button>
         </div>
 
         <Grid container spacing={1.2} className='mt-2'>
-          {[50, 100, 150, 200, 250, 300].map((value, index) => (
-            <Grid key={index} item xs={4}>
-              <Button fullWidth variant='outlined' size='medium' onClick={() => setValue('amount', value)}>
-                {value}
-              </Button>
-            </Grid>
-          ))}
+          {[50, 100, 150, 200, 250, 300].map((value, index) => {
+            const isSelected = value === amount;
+            return (
+              <Grid key={index} item xs={4}>
+                <Button
+                  fullWidth
+                  size='medium'
+                  variant={isSelected ? 'contained' : 'outlined'}
+                  color={isSelected ? 'secondary' : 'inherit'}
+                  classes={{ outlinedInherit: 'text-black/80 border-2 border-line' }}
+                  className='h-[40px] rounded-[8px] text-[20px]'
+                  onClick={() => setValue('amount', value)}
+                >
+                  {value}
+                </Button>
+              </Grid>
+            );
+          })}
         </Grid>
       </DialogContent>
       <DialogActions>
