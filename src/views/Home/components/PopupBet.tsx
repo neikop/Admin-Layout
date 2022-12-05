@@ -24,7 +24,7 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
 
   const { mutate: createBet, isLoading } = useMutation(transactionService.createBet, {
     onSuccess: () => {
-      enqueueSnackbar('Đặt cược thành công');
+      enqueueSnackbar('Đặt lệnh thành công');
       onClose();
     },
   });
@@ -41,7 +41,7 @@ const PopupBet = ({ onClose, item }: PopupProps) => {
 
   return (
     <>
-      <DialogTitle>Đặt cược</DialogTitle>
+      <DialogTitle>Đặt lệnh</DialogTitle>
       <DialogContent>
         <div className='flex space-x-2'>
           <Button onClick={() => setValue('amount', Math.max(10, amount - 10))}>
