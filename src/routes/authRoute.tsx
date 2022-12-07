@@ -2,13 +2,13 @@ import { LoginScreen, RegisterScreen } from 'views/Auth';
 
 const authRoute = {
   login: {
-    path: '/dang-nhap',
-    url: '/auth/dang-nhap',
+    path: '/login',
+    url: '/auth/login',
     component: LoginScreen,
   },
   register: {
-    path: '/dang-ky',
-    url: '/auth/dang-ky',
+    path: '/register',
+    url: '/auth/register',
     component: RegisterScreen,
   },
 };

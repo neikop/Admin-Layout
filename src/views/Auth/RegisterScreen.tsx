@@ -1,5 +1,5 @@
 import { LoadingButton } from '@mui/lab';
-import { TextField } from '@mui/material';
+import { Paper, TextField } from '@mui/material';
 import { InputPassword } from 'components';
 import { useSnackbar } from 'notistack';
 import { Controller, useForm } from 'react-hook-form';
@@ -12,14 +12,13 @@ const RegisterScreen = () => {
   const navigator = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
-  const { control, handleSubmit, watch, reset } = useForm({ mode: 'onChange' });
+  const { control, handleSubmit, watch } = useForm({ mode: 'onChange' });
   const { password } = watch();
 
   const { mutate: register, isLoading } = useMutation(authService.register, {
     onSuccess: () => {
       enqueueSnackbar('Đăng ký thành công', { variant: 'success' });
       navigator(authRoute.login.url, { replace: true });
-      reset();
     },
   });
 
@@ -30,7 +29,7 @@ const RegisterScreen = () => {
   };
 
   return (
-    <div className='flex-1 flex flex-col space-y-10 bg-white/0 rounded-t-[24px] px-[24px] py-[36px]'>
+    <Paper className='w-[600px] flex flex-col gap-10 p-8'>
       <Controller
         name='username'
         defaultValue=''
@@ -95,12 +94,13 @@ const RegisterScreen = () => {
         Đăng ký
       </LoadingButton>
 
-      <div className='flex justify-center mt-[-20px]'>
+      <div className='flex justify-center space-x-2 mt-[-20px]'>
+        <span>Đã có tài khoản?</span>
         <Link className='font-bold hover:text-primary-main' to={authRoute.login.url}>
           Đăng nhập
         </Link>
       </div>
-    </div>
+    </Paper>
   );
 };
 
