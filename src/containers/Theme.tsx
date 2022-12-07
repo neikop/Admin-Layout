@@ -3,23 +3,20 @@ import { useNotification } from 'hooks';
 
 export const appTheme = createTheme({
   components: {
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: 'xl',
+      },
+    },
     MuiButton: {
       defaultProps: {
         variant: 'text',
-        color: 'primary',
-        size: 'large',
-        disableElevation: false,
+        disableElevation: true,
       },
       styleOverrides: {
-        sizeLarge: { minHeight: 48, minWidth: 48, fontSize: 16 },
+        sizeLarge: { minHeight: 48, minWidth: 48 },
         sizeMedium: { minHeight: 40, minWidth: 40 },
         sizeSmall: { minHeight: 32, minWidth: 32 },
-      },
-    },
-    MuiTextField: {
-      defaultProps: {
-        size: 'medium',
-        InputLabelProps: { shrink: true },
       },
     },
     MuiTooltip: {
@@ -27,24 +24,43 @@ export const appTheme = createTheme({
         arrow: true,
       },
     },
-    MuiMenu: {
+    MuiPagination: {
       defaultProps: {
-        transformOrigin: { horizontal: 'right', vertical: 'top' },
-        anchorOrigin: { horizontal: 'right', vertical: 'bottom' },
+        variant: 'outlined',
+        shape: 'rounded',
+        size: 'large',
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: 'outlined',
+        size: 'small',
+        color: 'primary',
+        InputLabelProps: { shrink: true },
       },
     },
   },
   typography: {
     fontFamily: 'Noto Sans Display',
     button: { fontWeight: 600, textTransform: 'none' },
+    subtitle1: { fontSize: 16, fontWeight: 500, lineHeight: 1.5 },
+    subtitle2: { fontSize: 14, fontWeight: 500, lineHeight: 1.43 },
+    body1: { fontSize: 16 },
+    body2: { fontSize: 14 },
+    caption: { fontSize: 12 },
   },
   palette: {
     primary: {
-      main: '#9689ed',
+      light: '#7d302f',
+      main: '#b0052c',
+      dark: '#330f0d',
     },
     secondary: {
-      main: '#ff9e7e',
+      light: '#b3e7ff',
+      main: '#4da7d0',
+      dark: '#00bfff',
     },
+    mode: 'light',
   },
 });
 

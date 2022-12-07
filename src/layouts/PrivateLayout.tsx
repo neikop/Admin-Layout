@@ -1,3 +1,4 @@
+import { AppHeader } from 'containers';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
@@ -16,6 +17,7 @@ const PrivateLayout = () => {
 
   return (
     <main>
+      <AppHeader />
       <Routes>
         {Object.values(privateRoute).map(({ path, component: Element }) => (
           <Route key={path} path={path} element={<Element />} />

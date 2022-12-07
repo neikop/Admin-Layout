@@ -6,10 +6,14 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          main: '#9689ed',
+          main: 'var(--color-primary-main)',
+          dark: 'var(--color-primary-dark)',
+          light: 'var(--color-primary-light)',
         },
         secondary: {
-          main: '#ff9e7e',
+          main: 'var(--color-secondary-main)',
+          dark: 'var(--color-secondary-dark)',
+          light: 'var(--color-secondary-light)',
         },
       },
     },

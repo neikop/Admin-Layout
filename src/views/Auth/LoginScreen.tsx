@@ -1,9 +1,8 @@
 import { LoadingButton } from '@mui/lab';
 import { Paper, TextField } from '@mui/material';
+import { useMutation } from '@tanstack/react-query';
 import { InputPassword } from 'components';
-import { useSnackbar } from 'notistack';
 import { Controller, useForm } from 'react-hook-form';
-import { useMutation } from 'react-query';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { signIn } from 'reducers/profileSlice';
@@ -12,12 +11,10 @@ import { authService } from 'services';
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
-  const { enqueueSnackbar } = useSnackbar();
   const { control, handleSubmit } = useForm({ mode: 'onChange' });
 
   const { mutate: login, isLoading } = useMutation(authService.login, {
     onSuccess: ({ tokens, player }) => {
-      enqueueSnackbar('Đăng nhập thành công');
       dispatch(
         signIn({
           accessToken: tokens.access.token,

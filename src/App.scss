@@ -21,10 +21,13 @@ a:hover {
 }
 
 :root {
-  --color-primary: #9689ed;
-  --color-primary-dark: #5b4dbe;
-  --color-secondary: #ff9e7e;
-  --color-secondary-dark: #ff5018;
+  --color-primary-light: #7d302f;
+  --color-primary-main: #b0052c;
+  --color-primary-dark: #330f0d;
+
+  --color-secondary-light: #b3e7ff;
+  --color-secondary-main: #4da7d0;
+  --color-secondary-dark: #00bfff;
 }
 
 body > iframe {

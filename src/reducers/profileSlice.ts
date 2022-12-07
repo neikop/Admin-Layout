@@ -10,7 +10,7 @@ export type ProfileState = UserType & {
 export const profileSlice = createSlice({
   name: 'profile',
   initialState: {
-    isLoggedIn: true,
+    isLoggedIn: false,
   } as ProfileState,
   reducers: {
     signIn: (state, { payload }) => {
@@ -22,10 +22,15 @@ export const profileSlice = createSlice({
       localStorage.removeItem('profile');
       return { isLoggedIn: false };
     },
+    newBalance: (state, { payload }: { payload: number }) => {
+      const profile = { ...state, balance: payload };
+      localStorage.setItem('profile', JSON.stringify(profile));
+      return profile;
+    },
   },
 });
 
-export const { signIn, signOut } = profileSlice.actions;
+export const { signIn, signOut, newBalance } = profileSlice.actions;
 
 export const profileSelector = ({ profile }: RootState) => profile;
 
