@@ -1,41 +1,12 @@
-.MuiFormControl-root {
-  > label {
-    margin-bottom: 4px;
-  }
-  > .MuiFormHelperText-root {
-    margin: 4px 0px;
-  }
-}
-
-.MuiTextField-root {
-  > label {
-    font-size: 20px;
-  }
-  > .MuiInput-root {
-    margin-top: 20px;
-  }
-  > .MuiFormHelperText-root {
-    font-size: 14px;
-  }
-}
-
 .MuiTableContainer-root {
   .MuiTableRow-root:hover {
     background-color: #00000006;
   }
   .MuiTableCell-head {
     padding: 12px 12px;
-    font-weight: 500;
   }
   .MuiTableCell-body {
     padding: 12px 12px;
-  }
-}
-
-.MuiTabs-root {
-  .MuiTab-root {
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
   }
 }
 
@@ -52,65 +23,7 @@
   }
 }
 
-.MuiButton-root.MuiButton-text,
-.MuiButton-root.MuiButton-contained {
-  &:not(.MuiButtonGroup-grouped) {
-    border-radius: 12px;
-  }
-  &:hover {
-    filter: brightness(0.9);
-  }
-  &.MuiButton-containedPrimary {
-    @extend .bg-primary-gradient;
-  }
-  &.MuiButton-containedSecondary {
-    @extend .bg-secondary-gradient;
-  }
-  > .MuiLoadingButton-loadingIndicator {
-    color: #333;
-  }
-}
-
-.MuiDialog-root {
-  > .MuiBackdrop-root {
-    background-color: #000c;
-  }
-  > .MuiDialog-container .MuiDialog-paper {
-    max-width: 480px;
-
-    .MuiDialogTitle-root {
-      font-size: 20px;
-      font-weight: 600;
-      text-align: center;
-    }
-    .MuiDialogActions-root {
-      justify-content: center;
-      padding-bottom: 20px;
-    }
-  }
-  > .MuiDialog-container .MuiDialog-paper:not(.MuiDialog-paperFullScreen) {
-    border-radius: 24px;
-  }
-  > .MuiDialog-container .MuiDialog-paper.MuiDialog-paperFullScreen {
-    max-width: 600px;
-    background: url(../assets/images/App-background.png) no-repeat center / cover;
-  }
-}
-
-.MuiInputBase-root.MuiOutlinedInput-root {
-  background-color: #fffb;
-  border-radius: 100px;
-  > .MuiOutlinedInput-input {
-    padding: 12px 16px;
-  }
-  > .MuiOutlinedInput-notchedOutline {
-    border-radius: 100px;
-  }
-}
-
 .SnackbarContent-root {
-  max-width: 560px;
-
   .SnackbarItem-message {
     font-size: 16px;
     font-family: 'Noto Sans Display';

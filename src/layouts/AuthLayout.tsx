@@ -1,5 +1,3 @@
-import { AppLogo } from 'components';
-import { WEB_TITLE } from 'env';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
@@ -17,11 +15,7 @@ const AuthLayout = () => {
   }, [isLoggedIn, navigator]);
 
   return (
-    <main className='flex flex-col'>
-      <div className='h-[120px] flex justify-center items-center space-x-2'>
-        <AppLogo />
-        <span className='font-[Lemonada] text-[32px]'>{WEB_TITLE}</span>
-      </div>
+    <main className='flex justify-center items-center'>
       <Routes>
         {Object.values(authRoute).map(({ path, component: Element }) => (
           <Route key={path} path={path} element={<Element />} />

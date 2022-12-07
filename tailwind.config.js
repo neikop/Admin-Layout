@@ -6,19 +6,11 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          dark: '#564BA8',
-          main: '#9689ED',
-          light: '#AFA8EC',
+          main: '#9689ed',
         },
         secondary: {
-          main: '#FF9E7E',
+          main: '#ff9e7e',
         },
-        success: '#37A62B',
-        warn: '#DF8532',
-        error: '#FF4E71',
-        info: '#2996C5',
-        neutral: '#465A7A',
-        line: '#ECE8F3',
       },
     },
   },

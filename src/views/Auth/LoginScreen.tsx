@@ -1,5 +1,5 @@
 import { LoadingButton } from '@mui/lab';
-import { TextField } from '@mui/material';
+import { Paper, TextField } from '@mui/material';
 import { InputPassword } from 'components';
 import { useSnackbar } from 'notistack';
 import { Controller, useForm } from 'react-hook-form';
@@ -41,7 +41,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <div className='flex-1 flex flex-col space-y-10 bg-white/80 rounded-t-[24px] px-[24px] py-[36px]'>
+    <Paper className='w-[600px] flex flex-col gap-10 p-8'>
       <Controller
         name='username'
         defaultValue=''
@@ -90,13 +90,7 @@ const LoginScreen = () => {
           Đăng ký ngay
         </Link>
       </div>
-
-      <div className='flex flex-wrap justify-center mt-[20px] space-x-3 sm:space-x-5'>
-        <img src={require('assets/icons/Techcombank-logo.png')} className='h-[40px] sm:h-[60px]' />
-        <img src={require('assets/icons/BIDV-logo.png')} className='h-[40px] sm:h-[60px]' />
-        <img src={require('assets/icons/Vingroup-logo.png')} className='h-[40px] sm:h-[60px]' />
-      </div>
-    </div>
+    </Paper>
   );
 };
 
