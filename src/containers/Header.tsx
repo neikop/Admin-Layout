@@ -27,7 +27,7 @@ const Header = () => {
           <Link to='/'>
             <img src={require('assets/icons/Github.png')} className='h-10' />
           </Link>
-          <span className='font-medium text-2xl text-primary-main'>Free Admin</span>
+          <span className='font-medium text-2xl text-primary-main'>Save bank Admin</span>
         </div>
         <Divider className='my-2' />
         {isLoggedIn && <AppMenu />}
