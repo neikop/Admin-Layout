@@ -1,5 +1,5 @@
 import { LoadingButton } from '@mui/lab';
-import { Paper, TextField } from '@mui/material';
+import { Container, Paper, TextField } from '@mui/material';
 import { useMutation } from '@tanstack/react-query';
 import { InputPassword } from 'components';
 import { useSnackbar } from 'notistack';
@@ -13,12 +13,12 @@ const RegisterScreen = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const { control, handleSubmit, watch } = useForm({ mode: 'onChange' });
-  const { password } = watch();
+  const { username, password } = watch();
 
   const { mutate: register, isLoading } = useMutation(authService.register, {
     onSuccess: () => {
       enqueueSnackbar('Đăng ký thành công', { variant: 'success' });
-      navigator(authRoute.login.url, { replace: true });
+      navigator(authRoute.login.url, { replace: true, state: { username, password } });
     },
   });
 
@@ -29,7 +29,7 @@ const RegisterScreen = () => {
   };
 
   return (
-    <Paper className='w-[600px] flex flex-col gap-10 p-8'>
+    <Container component={Paper} maxWidth='sm' className='flex flex-col gap-10 p-8'>
       <Controller
         name='username'
         defaultValue=''
@@ -100,7 +100,7 @@ const RegisterScreen = () => {
           Đăng nhập
         </Link>
       </div>
-    </Paper>
+    </Container>
   );
 };
 

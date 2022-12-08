@@ -22,12 +22,11 @@ const beforeRequest = (config: AxiosRequestConfig) => {
 const onError = async (error: AxiosError) => {
   const { response } = error;
   if (response) {
-    const { status, data } = response;
+    const { status } = response;
     if (status === 401) {
       store.dispatch(signOut({}));
     } else {
-      const message = (data as any).message ?? 'Đã có lỗi xảy ra';
-      store.dispatch(openAlert({ message, variant: 'error' }));
+      store.dispatch(openAlert({ message: 'Đã có lỗi xảy ra', variant: 'error' }));
     }
   }
   return Promise.reject(error);
@@ -37,6 +36,6 @@ const client = axios.create({ baseURL: API_URL });
 client.interceptors.request.use(beforeRequest);
 client.interceptors.response.use(({ data }) => data, onError);
 
-client.defaults.transformResponse = [...(axios.defaults.transformResponse as []), (data) => data];
+client.defaults.transformResponse = [...(axios.defaults.transformResponse as []), (data) => data.data];
 
 export { client };

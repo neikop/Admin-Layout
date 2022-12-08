@@ -1,27 +1,22 @@
 import { LoadingButton } from '@mui/lab';
-import { Paper, TextField } from '@mui/material';
+import { Container, Paper, TextField } from '@mui/material';
 import { useMutation } from '@tanstack/react-query';
 import { InputPassword } from 'components';
 import { Controller, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { signIn } from 'reducers/profileSlice';
 import { authRoute } from 'routes';
 import { authService } from 'services';
 
 const LoginScreen = () => {
   const dispatch = useDispatch();
+  const { state } = useLocation();
   const { control, handleSubmit } = useForm({ mode: 'onChange' });
 
   const { mutate: login, isLoading } = useMutation(authService.login, {
-    onSuccess: ({ tokens, player }) => {
-      dispatch(
-        signIn({
-          accessToken: tokens.access.token,
-          refreshToken: tokens.refresh.token,
-          ...player,
-        }),
-      );
+    onSuccess: ({ accessToken }) => {
+      dispatch(signIn({ accessToken }));
     },
   });
 
@@ -38,10 +33,10 @@ const LoginScreen = () => {
   };
 
   return (
-    <Paper className='w-[600px] flex flex-col gap-10 p-8'>
+    <Container component={Paper} maxWidth='sm' className='flex flex-col gap-10 p-8'>
       <Controller
         name='username'
-        defaultValue=''
+        defaultValue={state?.username ?? ''}
         control={control}
         rules={{
           required: 'Tài khoản không được để trống',
@@ -59,7 +54,7 @@ const LoginScreen = () => {
       />
       <Controller
         name='password'
-        defaultValue=''
+        defaultValue={state?.password ?? ''}
         control={control}
         rules={{
           required: 'Mật khẩu không được để trống',
@@ -87,7 +82,7 @@ const LoginScreen = () => {
           Đăng ký ngay
         </Link>
       </div>
-    </Paper>
+    </Container>
   );
 };
 

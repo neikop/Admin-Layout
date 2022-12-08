@@ -11,7 +11,7 @@ export const appTheme = createTheme({
     MuiButton: {
       defaultProps: {
         variant: 'text',
-        disableElevation: true,
+        disableElevation: false,
       },
       styleOverrides: {
         sizeLarge: { minHeight: 48, minWidth: 48 },
@@ -28,7 +28,7 @@ export const appTheme = createTheme({
       defaultProps: {
         variant: 'outlined',
         shape: 'rounded',
-        size: 'large',
+        size: 'medium',
       },
     },
     MuiTextField: {

@@ -1,4 +1,6 @@
 .MuiTableContainer-root {
+  margin: 24px 0px;
+
   .MuiTableRow-root:hover {
     background-color: #00000006;
   }
@@ -7,6 +9,22 @@
   }
   .MuiTableCell-body {
     padding: 12px 12px;
+  }
+}
+
+.MuiDialog-root {
+  .MuiDialogTitle-root {
+    text-align: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #0003;
+  }
+  .MuiDialogContent-root {
+    min-height: 120px;
+    padding: 16px 16px !important;
+  }
+  .MuiDialogActions-root {
+    padding: 12px 16px;
+    border-top: 1px solid #0003;
   }
 }
 
@@ -31,5 +49,12 @@
       width: 22px;
       height: 22px;
     }
+  }
+}
+
+.MuiButton-root {
+  &.MuiButton-outlinedInherit {
+    border-color: #0008;
+    color: #000b;
   }
 }
