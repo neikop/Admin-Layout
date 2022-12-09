@@ -31,12 +31,21 @@ const PaymentTokenList = () => {
   const { items = [], total, currentPage, pages: totalPage } = data ?? {};
 
   const [openCreatePopup, setOpenCreatePopup] = useState(false);
+  const [itemChoice, setItemChoice] = useState<BankType>();
 
   return (
     <>
       <div className='flex items-center justify-between'>
         <CommonSearch onChange={onSearchChange} />
-        <Button variant='contained' className='w-40' startIcon={<Add />} onClick={() => setOpenCreatePopup(true)}>
+        <Button
+          variant='contained'
+          className='w-40'
+          startIcon={<Add />}
+          onClick={() => {
+            setItemChoice(undefined);
+            setOpenCreatePopup(true);
+          }}
+        >
           Create
         </Button>
       </div>
@@ -49,6 +58,7 @@ const PaymentTokenList = () => {
                 <TableCell>Number Bank</TableCell>
                 <TableCell>Note</TableCell>
                 <TableCell>Last Update</TableCell>
+                <TableCell></TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -58,6 +68,19 @@ const PaymentTokenList = () => {
                   <TableCell>{item.numberBank}</TableCell>
                   <TableCell>{item.note}</TableCell>
                   <TableCell>{DateTime.fromISO(item.updatedAt).toFormat('dd/MM/yyyy HH:mm')}</TableCell>
+                  <TableCell align='right'>
+                    <Button
+                      variant='outlined'
+                      size='small'
+                      color='info'
+                      onClick={() => {
+                        setOpenCreatePopup(true);
+                        setItemChoice(item);
+                      }}
+                    >
+                      Update
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
               <TableRowEmpty visible={!isFetching && items.length === 0} />
@@ -76,7 +99,7 @@ const PaymentTokenList = () => {
       </div>
 
       <Dialog open={openCreatePopup} fullWidth maxWidth='xs'>
-        <PopupCreateBank onClose={() => setOpenCreatePopup(false)} />
+        <PopupCreateBank item={itemChoice} onClose={() => setOpenCreatePopup(false)} />
       </Dialog>
     </>
   );

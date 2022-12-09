@@ -10,6 +10,10 @@ type BankCreateType = {
   note: string;
 };
 
+type BankUpdateType = BankCreateType & {
+  id: string;
+};
+
 type BankPaginateType = PaginateType & {
   items: BankType[];
 };

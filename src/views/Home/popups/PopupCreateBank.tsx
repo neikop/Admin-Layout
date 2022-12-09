@@ -5,32 +5,44 @@ import { InputNumber } from 'components';
 import { Controller, useForm } from 'react-hook-form';
 import { dashboardService, queryClient } from 'services';
 
-const PopupCreateBank = ({ onClose }: PopupController) => {
+type PopupProps = PopupController & {
+  item?: BankType;
+};
+
+const PopupCreateBank = ({ item, onClose }: PopupProps) => {
+  const isCreate = !item;
+
   const { control, handleSubmit } = useForm({ mode: 'onChange' });
 
-  const { mutate: createBank, isLoading } = useMutation(dashboardService.createBank, {
-    onSuccess: () => {
-      queryClient.invalidateQueries(['dashboardService.fetchBanks']);
-      onClose();
+  const { mutate: createBank, isLoading } = useMutation(
+    isCreate ? dashboardService.createBank : dashboardService.updateBank,
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['dashboardService.fetchBanks']);
+        onClose();
+      },
     },
-  });
+  );
 
   const handleClickSubmit = () => {
     handleSubmit((values) => {
-      createBank(values as BankCreateType);
+      createBank({
+        id: item?.id!,
+        ...(values as BankCreateType),
+      });
     })();
   };
 
   return (
     <>
-      <DialogTitle>Create Bank</DialogTitle>
+      <DialogTitle>{isCreate ? 'Create' : 'Update'} Bank</DialogTitle>
 
       <DialogContent>
         <Grid container spacing={3}>
           <Grid item sm={12}>
             <Controller
               name='customerId'
-              defaultValue=''
+              defaultValue={item?.customerId ?? ''}
               control={control}
               render={({ field, fieldState: { error } }) => (
                 <TextField
@@ -51,7 +63,7 @@ const PopupCreateBank = ({ onClose }: PopupController) => {
           <Grid item sm={12}>
             <Controller
               name='numberBank'
-              defaultValue=''
+              defaultValue={item?.numberBank ?? ''}
               control={control}
               render={({ field, fieldState: { error } }) => (
                 <TextField {...field} fullWidth label='Number Bank' error={!!error} helperText={error?.message} />
@@ -62,7 +74,7 @@ const PopupCreateBank = ({ onClose }: PopupController) => {
           <Grid item sm={12}>
             <Controller
               name='note'
-              defaultValue=''
+              defaultValue={item?.note ?? ''}
               control={control}
               render={({ field, fieldState: { error } }) => (
                 <TextField
@@ -85,7 +97,7 @@ const PopupCreateBank = ({ onClose }: PopupController) => {
           Cancel
         </LoadingButton>
         <LoadingButton variant='contained' loading={isLoading} onClick={handleClickSubmit}>
-          Create
+          {isCreate ? 'Create' : 'Update'}
         </LoadingButton>
       </DialogActions>
     </>
