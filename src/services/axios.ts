@@ -25,6 +25,9 @@ const onError = async (error: AxiosError) => {
     const { status } = response;
     if (status === 401) {
       store.dispatch(signOut({}));
+    } else if (status === 403) {
+      store.dispatch(openAlert({ message: 'Bạn chưa là admin', variant: 'error' }));
+      store.dispatch(signOut({}));
     } else {
       store.dispatch(openAlert({ message: 'Đã có lỗi xảy ra', variant: 'error' }));
     }
