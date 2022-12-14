@@ -1,11 +1,11 @@
 import axios, { AxiosError, AxiosRequestConfig } from 'axios';
 import { API_URL } from 'env';
 import { openAlert } from 'reducers/notificationSlice';
-import { ProfileState, signOut } from 'reducers/profileSlice';
+import { signOut } from 'reducers/profileSlice';
 import { store } from 'reducers/store';
 
 const beforeRequest = (config: AxiosRequestConfig) => {
-  const { isLoggedIn, accessToken }: ProfileState = store.getState().profile;
+  const { isLoggedIn, accessToken }: ProfileType = store.getState().profile;
   if (isLoggedIn) {
     Object.assign(config.headers as any, {
       Authorization: `Bearer ${accessToken}`,

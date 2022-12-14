@@ -14,7 +14,7 @@ const Breadcrumb = () => {
     <div className='flex items-center space-x-1'>
       <Breadcrumbs separator={<NavigateNext fontSize='small' className='text-primary-dark' />}>
         {routes.map((item, index) => (
-          <Typography variant='h6' key={index} className='font-medium text-xl text-primary-dark'>
+          <Typography key={index} variant='h5' className='text-primary-dark'>
             {item?.name}
           </Typography>
         ))}

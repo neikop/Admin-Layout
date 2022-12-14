@@ -17,6 +17,7 @@ const useTabs = (tabs: TabType[]) => {
   const handleChangeTab = useCallback(
     (event: React.SyntheticEvent, value: any) => {
       setActiveTab(value);
+
       if (others.page) others.page = '1';
       window.history.replaceState(null, '', stringify({ ...others, tab: value }, { addQueryPrefix: true }));
     },

@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 
 const useSearch = (search?: any) => {
-  const [dataSearch, setDataSearch] = useState({ page: 1, size: 10, ...search });
+  const [dataSearch, setDataSearch] = useState({ page: 1, size: 10, desc: true, ...search });
 
   const onSearchChange = useCallback((search: any) => {
     setDataSearch((current: any) => ({

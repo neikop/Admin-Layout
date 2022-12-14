@@ -2,7 +2,7 @@ import { Home } from 'views/Home';
 
 const privateRoute = {
   home: {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: Home,
   },

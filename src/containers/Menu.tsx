@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { privateRoute } from 'routes';
 
 const StyledListItem = styled(ListItemButton)({
-  borderRadius: '8px !important',
+  borderRadius: '12px !important',
   '&.Mui-selected': {
     backgroundColor: 'var(--color-primary-main) !important',
     color: '#fff',
@@ -13,21 +13,9 @@ const StyledListItem = styled(ListItemButton)({
     backgroundColor: 'var(--color-primary-light) !important',
     color: '#fff',
   },
-  marginBottom: '8px !important',
 });
 
-type SubMenuType = {
-  name?: string | JSX.Element;
-  path: string;
-};
-
-type MenuItemProps = {
-  name?: string | JSX.Element;
-  path: string;
-  items?: SubMenuType[];
-};
-
-const MenuItem = ({ name, path, items }: MenuItemProps) => {
+const MenuItem = ({ path, name }: { path: string; name?: string }) => {
   const location = useLocation();
 
   return (
@@ -43,11 +31,9 @@ const Menu = () => {
   const { home } = privateRoute;
 
   return (
-    <>
-      <List className='flex flex-col gap-1'>
-        <MenuItem {...home} />
-      </List>
-    </>
+    <List className='flex flex-col gap-1'>
+      <MenuItem {...home} />
+    </List>
   );
 };
 

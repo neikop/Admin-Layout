@@ -41,20 +41,25 @@
   }
 }
 
-.SnackbarContent-root {
-  .SnackbarItem-message {
-    font-size: 16px;
-    font-family: 'Noto Sans Display';
-    .MuiSvgIcon-root {
-      width: 22px;
-      height: 22px;
-    }
-  }
-}
-
 .MuiButton-root {
   &.MuiButton-outlinedInherit {
     border-color: #0008;
     color: #000b;
+  }
+}
+
+.SnackbarContainer-top {
+  top: 72px !important;
+
+  .SnackbarContent-root {
+    .SnackbarItem-message {
+      font-size: 16px;
+      font-family: 'Montserrat';
+
+      .MuiSvgIcon-root {
+        width: 22px;
+        height: 22px;
+      }
+    }
   }
 }

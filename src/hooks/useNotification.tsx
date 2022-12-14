@@ -12,14 +12,7 @@ const useNotification = () => {
   useEffect(() => {
     if (onUpdate && lastUpdate.current !== onUpdate) {
       lastUpdate.current = onUpdate;
-      enqueueSnackbar(message, {
-        variant,
-        key,
-        anchorOrigin: {
-          vertical: 'top',
-          horizontal: 'center',
-        },
-      });
+      enqueueSnackbar(message, { variant, key });
     }
   }, [enqueueSnackbar, message, variant, key, onUpdate]);
 };

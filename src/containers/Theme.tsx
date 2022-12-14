@@ -1,4 +1,6 @@
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
 import { useNotification } from 'hooks';
 
 export const appTheme = createTheme({
@@ -41,7 +43,7 @@ export const appTheme = createTheme({
     },
   },
   typography: {
-    fontFamily: 'Noto Sans Display',
+    fontFamily: 'Montserrat',
     button: { fontWeight: 600, textTransform: 'none' },
     subtitle1: { fontSize: 16, fontWeight: 500, lineHeight: 1.5 },
     subtitle2: { fontSize: 14, fontWeight: 500, lineHeight: 1.43 },
@@ -66,8 +68,11 @@ export const appTheme = createTheme({
 
 const Theme = ({ children }: any) => {
   useNotification();
-
-  return <ThemeProvider theme={responsiveFontSizes(appTheme)}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={responsiveFontSizes(appTheme)}>
+      <LocalizationProvider dateAdapter={AdapterLuxon}>{children}</LocalizationProvider>
+    </ThemeProvider>
+  );
 };
 
 export default Theme;

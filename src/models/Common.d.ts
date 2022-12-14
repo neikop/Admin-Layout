@@ -1,4 +1,4 @@
-type ParamsType = {
+type PaginateParams = {
   search?: string;
   page: number;
   size: number;
